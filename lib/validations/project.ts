@@ -1,0 +1,40 @@
+import { z } from "zod";
+
+export const projectSchema = z.object({
+  title: z.string().min(2, "Title is required").max(120),
+  slug: z.string().min(2, "Slug is required").regex(/^[a-z0-9-]+$/, "Slug must be lowercase alphanumeric with hyphens"),
+  summary: z.string().min(10, "Summary must be at least 10 characters").max(300),
+  description: z.string().min(20, "Description must be at least 20 characters"),
+  category: z.enum([
+    "Web Applications",
+    "Mobile Apps",
+    "AI Products",
+    "SaaS",
+    "Enterprise Systems",
+    "UI/UX Design",
+  ]),
+  project_type: z.string().min(2, "Project type is required"),
+  client_type: z.enum(["Startup", "Enterprise", "Business", "Individual", "Internal"]),
+  engagement_type: z.enum(["Concept Project", "Internal Product", "Work in Progress", "Client Project"]),
+  status: z.enum(["Draft", "In Progress", "Live", "Archived"]),
+  visibility: z.enum(["Public", "Unlisted", "Private"]),
+  services: z.array(z.string()).min(1, "Select at least one service"),
+  technologies: z.array(z.string()).min(1, "Select at least one technology"),
+  cover_image: z.string().min(1, "Cover image path or URL is required"),
+  gallery: z.array(z.string()).default([]),
+  problem: z.string().min(10, "Problem statement is required"),
+  solution: z.string().min(10, "Solution statement is required"),
+  features: z.array(z.string()).min(1, "List at least one key feature"),
+  architecture: z.string().min(10, "Architecture notes are required"),
+  challenges: z.string().min(10, "Challenges & trade-offs are required"),
+  outcomes: z.string().min(10, "Outcomes description is required"),
+  outcomes_verified: z.boolean().default(false),
+  target_audience: z.string().default("General target users"),
+  product_objectives: z.array(z.string()).default([]),
+  scope_of_work: z.array(z.string()).default([]),
+  design_approach: z.string().default("User-centered research and clean wireframes"),
+  learnings_and_next_steps: z.string().default("Ongoing refinement based on architecture review"),
+  published_at: z.string().nullable().optional(),
+});
+
+export type ProjectInput = z.infer<typeof projectSchema>;
