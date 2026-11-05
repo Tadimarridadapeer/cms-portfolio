@@ -260,7 +260,7 @@ export function EnquiryForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-surface-card border border-border rounded-xl p-6 sm:p-10 shadow-card space-y-8">
+    <form onSubmit={handleSubmit} className="bg-surface-card border border-border rounded-xl p-5 sm:p-8 md:p-10 shadow-card space-y-6 sm:space-y-8">
       {submitError && (
         <Alert type="error" title="Submission Failed">
           {submitError}

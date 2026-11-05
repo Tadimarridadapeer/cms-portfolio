@@ -40,9 +40,9 @@ export function Navbar() {
     <header className="site-nav">
       <div className="wrap nav-inner">
         {/* Brand */}
-        <Link href="/" className="brand">
+        <Link href="/" className="brand shrink-0">
           <span className="brand-symbol">CMS</span>
-          <span className="flex items-center gap-1 font-extrabold tracking-tight text-white">
+          <span className="flex items-center gap-1 font-extrabold tracking-tight text-white text-xs sm:text-sm whitespace-nowrap">
             CROSS MOTIVE SERVICES
             <small className="hidden lg:inline font-mono text-[9px] tracking-[0.12em] text-[#aab6c2] ml-1">
               / DIGITAL ENGINEERING
@@ -89,25 +89,36 @@ export function Navbar() {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#17232f] border-b border-white/10 px-6 py-6 flex flex-col gap-5 text-white animate-fadeIn">
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-sm font-medium hover:text-[var(--lime)] transition-colors py-1"
-            >
-              {link.label}
-            </Link>
-          ))}
-          <div className="pt-4 border-t border-white/10">
+        <div className="md:hidden bg-[#17232f] border-b border-white/10 px-6 py-6 flex flex-col gap-4 text-white animate-in slide-in-from-top-2 duration-200 shadow-2xl">
+          {NAV_LINKS.map((link) => {
+            const isActive = pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href));
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className={`text-sm font-medium py-1.5 transition-colors ${
+                  isActive ? "text-[var(--lime)] font-semibold" : "text-white/80 hover:text-[var(--lime)]"
+                }`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
+          <div className="pt-3 border-t border-white/10 flex flex-col gap-3">
             <Link
               href="/contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="btn-primary w-full justify-center"
+              className="btn-primary w-full justify-center py-3 text-center font-bold text-sm"
             >
               Build with us <span>↗</span>
             </Link>
+            <a
+              href="mailto:sahith@crossmotiveservices.com"
+              className="text-xs text-white/50 text-center hover:text-white transition-colors break-all"
+            >
+              sahith@crossmotiveservices.com
+            </a>
           </div>
         </div>
       )}

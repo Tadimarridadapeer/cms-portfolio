@@ -159,7 +159,7 @@ export function ContactPopupModal() {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
       {/* Backdrop */}
       <div
         className="fixed inset-0 bg-black/75 backdrop-blur-sm transition-opacity duration-300"
@@ -172,14 +172,14 @@ export function ContactPopupModal() {
         role="dialog"
         aria-modal="true"
         aria-labelledby="modal-title"
-        className="relative w-full max-w-lg bg-[#0e1620] border border-white/15 rounded-2xl shadow-2xl p-6 sm:p-8 z-10 animate-in fade-in zoom-in-95 duration-200 text-white"
+        className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto my-auto bg-[#0e1620] border border-white/15 rounded-2xl shadow-2xl p-5 sm:p-8 z-10 animate-in fade-in zoom-in-95 duration-200 text-white"
       >
         {/* Close 'X' Button */}
         <button
           onClick={closeModal}
           type="button"
           aria-label="Close contact popup"
-          className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white/70 hover:text-white flex items-center justify-center transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#c9e56a] cursor-pointer"
+          className="absolute top-3 right-3 sm:top-4 sm:right-4 w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white/70 hover:text-white flex items-center justify-center transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#c9e56a] cursor-pointer"
         >
           <X className="w-5 h-5" />
         </button>

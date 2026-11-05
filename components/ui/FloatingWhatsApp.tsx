@@ -18,7 +18,7 @@ export function FloatingWhatsApp() {
 
   return (
     <div
-      className="fixed bottom-6 right-6 z-50 flex items-center flex-row-reverse gap-3 select-none"
+      className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center flex-row-reverse gap-2 sm:gap-3 select-none"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -27,14 +27,14 @@ export function FloatingWhatsApp() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat with Cross Motive Services on WhatsApp"
-        className="group relative flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] text-white shadow-[0_6px_20px_rgba(37,211,102,0.45)] hover:shadow-[0_8px_25px_rgba(37,211,102,0.65)] hover:scale-110 active:scale-95 transition-all duration-300"
+        className="group relative flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#25D366] text-white shadow-[0_4px_16px_rgba(37,211,102,0.45)] hover:shadow-[0_8px_25px_rgba(37,211,102,0.65)] hover:scale-105 active:scale-95 transition-all duration-300"
       >
         {/* Subtle Online Pulse Ring */}
         <span className="absolute -inset-1 rounded-full bg-[#25D366] opacity-30 animate-ping pointer-events-none" />
 
         {/* Official WhatsApp SVG Icon */}
         <svg
-          className="w-7 h-7 fill-current relative z-10 transition-transform duration-300 group-hover:rotate-6"
+          className="w-6 h-6 sm:w-7 sm:h-7 fill-current relative z-10 transition-transform duration-300 group-hover:rotate-6"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >

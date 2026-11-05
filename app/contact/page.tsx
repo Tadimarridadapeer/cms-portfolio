@@ -43,7 +43,7 @@ export default function ContactPage() {
                   </h4>
                   <a
                     href="mailto:sahith@crossmotiveservices.com"
-                    className="text-sm font-bold text-foreground hover:text-accent transition-colors mt-0.5 block"
+                    className="text-sm font-bold text-foreground hover:text-accent transition-colors mt-0.5 block break-all"
                   >
                     sahith@crossmotiveservices.com
                   </a>

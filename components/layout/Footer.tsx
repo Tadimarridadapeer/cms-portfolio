@@ -44,7 +44,7 @@ export function Footer() {
                 Direct:{" "}
                 <a
                   href="mailto:sahith@crossmotiveservices.com"
-                  className="text-white hover:text-[var(--lime)] underline transition-colors"
+                  className="text-white hover:text-[var(--lime)] underline transition-colors break-all"
                 >
                   sahith@crossmotiveservices.com
                 </a>
