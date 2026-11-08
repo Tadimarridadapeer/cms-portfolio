@@ -202,6 +202,7 @@ const STUDIO_DOMAINS: Record<
 
 export default function HomePage() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDomain, setActiveDomain] = useState<StudioDomain>("cms");
   const [productFilter, setProductFilter] = useState<"all" | "cms" | "saas">("all");
   const [selectedProductId, setSelectedProductId] = useState<number | null>(null);
@@ -300,7 +301,7 @@ export default function HomePage() {
     <div className="bg-white text-charcoal selection:bg-royal selection:text-white relative font-sans">
       
       {/* DYNAMIC ISLAND NOTCH CONTAINER */}
-      <div className="fixed top-4 left-0 right-0 z-50 px-4 flex justify-center items-center pointer-events-none">
+      <div className="fixed top-3 sm:top-4 left-0 right-0 z-50 px-3 sm:px-4 flex flex-col items-center pointer-events-none">
         <header
           id="navWrapper"
           className={`${
@@ -308,22 +309,22 @@ export default function HomePage() {
           } flex items-center justify-between pointer-events-auto transition-all`}
         >
           {/* Brand Identity */}
-          <a href="#hero" className="brand-element flex items-center space-x-2.5 group shrink-0">
-            <div className="w-8 h-8 rounded-full bg-royal flex items-center justify-center text-white font-display font-bold text-xs tracking-wider transition-transform duration-300 group-hover:scale-105 shadow-royal-glow">
+          <a href="#hero" className="brand-element flex items-center space-x-2 sm:space-x-2.5 group shrink-0">
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-royal flex items-center justify-center text-white font-display font-bold text-[11px] sm:text-xs tracking-wider transition-transform duration-300 group-hover:scale-105 shadow-royal-glow shrink-0">
               CMS
             </div>
             <div className="brand-text">
-              <span className="font-display font-bold text-charcoal tracking-tight text-xs block leading-none">
+              <span className="font-display font-bold text-charcoal tracking-tight text-[11px] sm:text-xs block leading-none">
                 CROSSMOTIVE
               </span>
-              <span className="mono-tag text-royal text-[8px] font-semibold">SERVICES</span>
+              <span className="mono-tag text-royal text-[7.5px] sm:text-[8px] font-semibold">SERVICES</span>
             </div>
           </a>
 
-          {/* Navigation Links */}
+          {/* Desktop Navigation Links (Hidden on mobile to guarantee zero overflow) */}
           <nav
             id="navLinks"
-            className="flex items-center space-x-1 sm:space-x-2 text-[11px] font-mono tracking-wider text-charcoal-muted font-medium mx-auto"
+            className="hidden md:flex items-center space-x-1 lg:space-x-2 text-[11px] font-mono tracking-wider text-charcoal-muted font-medium mx-auto"
           >
             <a href="#pillars" className="px-2.5 py-1.5 rounded-full hover:text-royal hover:bg-royal-soft transition-all whitespace-nowrap">
               Pillars
@@ -334,32 +335,59 @@ export default function HomePage() {
             <a href="#architecture" className="px-2.5 py-1.5 rounded-full hover:text-royal hover:bg-royal-soft transition-all whitespace-nowrap">
               Architecture
             </a>
-            <a href="#process" className="hidden sm:inline-block px-2.5 py-1.5 rounded-full hover:text-royal hover:bg-royal-soft transition-all whitespace-nowrap">
+            <a href="#process" className="px-2.5 py-1.5 rounded-full hover:text-royal hover:bg-royal-soft transition-all whitespace-nowrap">
               Process
             </a>
-            <a href="#serve" className="hidden md:inline-block px-2.5 py-1.5 rounded-full hover:text-royal hover:bg-royal-soft transition-all whitespace-nowrap">
+            <a href="#serve" className="hidden lg:inline-block px-2.5 py-1.5 rounded-full hover:text-royal hover:bg-royal-soft transition-all whitespace-nowrap">
               Clients
             </a>
           </nav>
 
           {/* Right Side Actions & Status */}
-          <div className="flex items-center space-x-2 shrink-0">
-            {/* Operational Status Pill */}
+          <div className="flex items-center space-x-1.5 sm:space-x-2 shrink-0">
+            {/* Operational Status Pill (Desktop only) */}
             <div className="live-element hidden xl:flex items-center space-x-2 px-3 py-1 rounded-full bg-royal-soft border border-royal-border">
               <span className="w-2 h-2 rounded-full bg-royal animate-pulse"></span>
               <span className="mono-tag text-royal text-[9px] font-semibold">ONLINE</span>
             </div>
 
-            {/* Default Large CTA */}
+            {/* Desktop Start Project Button */}
             <button
+              type="button"
               onClick={openConsultation}
-              className="cta-default px-4 py-2 rounded-full bg-charcoal text-white font-sans font-semibold text-xs uppercase tracking-wider hover:bg-royal transition-all duration-300 shadow-subtle-lg hover:scale-105"
+              className="cta-default hidden md:inline-flex px-4 py-2 rounded-full bg-charcoal text-white font-sans font-semibold text-xs uppercase tracking-wider hover:bg-royal transition-all duration-300 shadow-subtle-lg hover:scale-105"
             >
               Start Project ↗
             </button>
 
-            {/* Notch Compact CTA (Scrolled State) */}
+            {/* Mobile Compact CTA Pill */}
             <button
+              type="button"
+              onClick={openConsultation}
+              className="md:hidden px-3 py-1.5 rounded-full bg-royal text-white font-sans font-bold text-[10px] uppercase tracking-wider hover:bg-royal-dark transition-all shadow-royal-glow whitespace-nowrap"
+            >
+              Enquire ↗
+            </button>
+
+            {/* Mobile Hamburger Toggle Button */}
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden w-8 h-8 rounded-full bg-canvas-warm border border-canvas-border flex items-center justify-center text-charcoal hover:border-royal transition-all"
+              aria-label="Toggle navigation menu"
+            >
+              {mobileMenuOpen ? (
+                <span className="font-mono text-base font-bold leading-none">&times;</span>
+              ) : (
+                <svg className="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M3 5h14a1 1 0 110 2H3a1 1 0 110-2zm0 4h14a1 1 0 110 2H3a1 1 0 110-2zm0 4h14a1 1 0 110 2H3a1 1 0 110-2z" clipRule="evenodd" />
+                </svg>
+              )}
+            </button>
+
+            {/* Notch Compact CTA (Scrolled State on Desktop) */}
+            <button
+              type="button"
               onClick={openConsultation}
               className="cta-notch px-3 py-1.5 rounded-full bg-royal text-white font-sans font-bold text-[11px] uppercase tracking-wider hover:bg-royal-dark transition-all shadow-royal-glow"
             >
@@ -367,25 +395,104 @@ export default function HomePage() {
             </button>
           </div>
         </header>
+
+        {/* Mobile Navigation Dropdown Menu */}
+        {mobileMenuOpen && (
+          <div className="w-[calc(100vw-1.5rem)] max-w-sm mt-2 p-5 rounded-2xl bg-white/95 backdrop-blur-2xl border border-canvas-border shadow-2xl pointer-events-auto transition-all animate-fadeIn md:hidden">
+            <div className="flex justify-between items-center pb-3 hairline-b mb-3">
+              <span className="mono-tag text-royal font-bold text-[9px]">NAVIGATION MATRIX</span>
+              <div className="flex items-center space-x-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-royal animate-pulse"></span>
+                <span className="mono-tag text-charcoal-subtle text-[8px]">ACTIVE</span>
+              </div>
+            </div>
+
+            <div className="space-y-1 text-xs font-mono">
+              <a
+                href="#pillars"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center justify-between p-2.5 rounded-xl text-charcoal hover:bg-royal-soft hover:text-royal transition-all"
+              >
+                <span>01 // Capabilities Pillars</span>
+                <span className="text-royal">→</span>
+              </a>
+              <a
+                href="#products"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center justify-between p-2.5 rounded-xl text-charcoal hover:bg-royal-soft hover:text-royal transition-all"
+              >
+                <span>02 // Solutions Matrix</span>
+                <span className="text-royal">→</span>
+              </a>
+              <a
+                href="#architecture"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center justify-between p-2.5 rounded-xl text-charcoal hover:bg-royal-soft hover:text-royal transition-all"
+              >
+                <span>03 // Layer Stack Visualizer</span>
+                <span className="text-royal">→</span>
+              </a>
+              <a
+                href="#process"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center justify-between p-2.5 rounded-xl text-charcoal hover:bg-royal-soft hover:text-royal transition-all"
+              >
+                <span>04 // 4-Step Methodology</span>
+                <span className="text-royal">→</span>
+              </a>
+              <a
+                href="#serve"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center justify-between p-2.5 rounded-xl text-charcoal hover:bg-royal-soft hover:text-royal transition-all"
+              >
+                <span>05 // Target Clientele</span>
+                <span className="text-royal">→</span>
+              </a>
+            </div>
+
+            <div className="pt-4 mt-3 hairline-t space-y-2">
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  openConsultation();
+                }}
+                className="w-full py-3 rounded-full bg-royal text-white font-sans font-bold text-xs uppercase tracking-wider hover:bg-royal-dark transition-all shadow-royal-glow"
+              >
+                Start Project Discovery ↗
+              </button>
+
+              <a
+                href="https://wa.me/919573963020?text=Hi%20CrossMotive%20Services%20Team%2C%20I%20would%20like%20to%20discuss%20a%20project."
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full py-2.5 rounded-full bg-canvas-warm border border-canvas-border text-charcoal hover:border-royal text-center block font-sans font-semibold text-[11px] uppercase tracking-wider transition-all"
+              >
+                Chat on WhatsApp ↗
+              </a>
+            </div>
+          </div>
+        )}
       </div>
 
       <main className="relative z-10">
         {/* HERO SECTION */}
-        <section id="hero" className="pt-36 pb-20 md:pt-44 md:pb-28 bg-white relative hairline-b overflow-hidden">
+        <section id="hero" className="pt-28 sm:pt-36 md:pt-44 pb-20 md:pb-28 bg-white relative hairline-b overflow-hidden">
           {/* Subtle Ambient Radial Lighting */}
           <div
             className="pointer-events-none absolute -top-44 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-b from-royal/5 via-royal/[0.02] to-transparent blur-3xl opacity-80"
             aria-hidden="true"
           />
 
-          <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-12 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
               
               {/* Hero Copy (Left Column) */}
-              <div className="lg:col-span-7 space-y-7">
-                <div className="inline-flex items-center space-x-3 px-3.5 py-1.5 rounded-full bg-royal-soft border border-royal-border">
-                  <span className="w-2 h-2 rounded-full bg-royal animate-pulse"></span>
-                  <span className="mono-tag text-royal font-semibold text-[10px]">
+              <div className="lg:col-span-7 space-y-6 sm:space-y-7">
+                <div className="inline-flex items-center space-x-2.5 px-3 sm:px-3.5 py-1.5 rounded-full bg-royal-soft border border-royal-border max-w-full">
+                  <span className="w-2 h-2 rounded-full bg-royal animate-pulse shrink-0"></span>
+                  <span className="mono-tag text-royal font-semibold text-[8px] sm:text-[10px] truncate">
                     CROSSMOTIVE SERVICES // ENTERPRISE IT STUDIO
                   </span>
                 </div>
