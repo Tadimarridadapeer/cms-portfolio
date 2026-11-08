@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CrossMotive Services — Enterprise IT & Software Engineering</title>
+
+<!-- Fonts: Plus Jakarta Sans (Display), Inter (Body), JetBrains Mono (Technical Tags) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        fontFamily: {
+          display: ['Plus Jakarta Sans', 'sans-serif'],
+          sans: ['Inter', 'sans-serif'],
+          mono: ['JetBrains Mono', 'monospace'],
+        },
+        colors: {
+          royal: {
+            DEFAULT: '#1e40af',
+            bright: '#2563eb',
+            dark: '#1e3a8a',
+            soft: '#eff6ff',
+            tint: 'rgba(30, 64, 175, 0.04)',
+            border: 'rgba(30, 64, 175, 0.16)',
+          },
+          charcoal: {
+            DEFAULT: '#0a0b0d',
+            light: '#14161c',
+            muted: '#4a5264',
+            subtle: '#8892a4'
+          },
+          canvas: {
+            DEFAULT: '#ffffff',
+            warm: '#f8f9fb',
+            card: '#ffffff',
+            border: 'rgba(0, 0, 0, 0.08)'
+          }
+        },
+        boxShadow: {
+          'subtle-lg': '0 16px 36px -12px rgba(10, 11, 13, 0.06)',
+          'island': '0 20px 40px -10px rgba(30, 64, 175, 0.14), 0 0 0 1px rgba(30, 64, 175, 0.15)',
+          'royal-glow': '0 8px 24px -4px rgba(30, 64, 175, 0.25)',
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  /* Base Typography & Canvas Setup */
+  body {
+    background-color: #ffffff;
+    color: #0a0b0d;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Custom Clean Scrollbar */
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: #ffffff; }
+  ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+  ::-webkit-scrollbar-thumb:hover { background: #1e40af; }
+
+  /* DYNAMIC ISLAND NOTCH ANIMATION LOGIC */
+  #navWrapper {
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Default Top Header State */
+  .nav-header-default {
+    width: 100%;
+    max-width: 80rem;
+    padding: 0.85rem 1.5rem;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 9999px;
+    box-shadow: 0 4px 20px -5px rgba(0,0,0,0.03);
+  }
+
+  /* Scrolled Dynamic Island State */
+  .nav-header-scrolled {
+    width: min(520px, calc(100vw - 2rem));
+    padding: 0.45rem 0.65rem 0.45rem 1.1rem;
+    background-color: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-radius: 9999px;
+    border: 1px solid rgba(30, 64, 175, 0.22);
+    box-shadow: 0 16px 36px -8px rgba(30, 64, 175, 0.16), 0 2px 10px rgba(0,0,0,0.04);
+  }
+
+  /* Structural elements inside Dynamic Island */
+  .nav-header-scrolled .brand-element,
+  .nav-header-scrolled .live-element,
+  .nav-header-scrolled .cta-default {
+    opacity: 0;
+    max-width: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    pointer-events: none;
+    transform: scale(0.9);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .nav-header-default .brand-element,
+  .nav-header-default .live-element,
+  .nav-header-default .cta-default {
+    opacity: 1;
+    max-width: 240px;
+    transform: scale(1);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Compact CTA button inside notch */
+  .nav-header-scrolled .cta-notch {
+    opacity: 1;
+    display: inline-flex;
+    transform: scale(1);
+  }
+
+  .nav-header-default .cta-notch {
+    opacity: 0;
+    display: none;
+    transform: scale(0.9);
+  }
+
+  /* Monospaced Precision Tag */
+  .mono-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* Organic Subtle Card Styling */
+  .organic-card {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 1.25rem;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .organic-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(30, 64, 175, 0.3);
+    box-shadow: 0 18px 38px -10px rgba(30, 64, 175, 0.09);
+  }
+
+  .hairline-b { border-bottom: 1px solid rgba(0, 0, 0, 0.08); }
+  .hairline-t { border-top: 1px solid rgba(0, 0, 0, 0.08); }
+</style>
+</head>
+<body class="selection:bg-royal selection:text-white relative">
+
+<!-- DYNAMIC ISLAND NOTCH CONTAINER -->
+<div class="fixed top-4 left-0 right-0 z-50 px-4 flex justify-center items-center pointer-events-none">
+  <header id="navWrapper" class="nav-header-default flex items-center justify-between pointer-events-auto transition-all">
+    
+    <!-- Brand Identity (Fades & collapses smoothly into Notch mode) -->
+    <a href="#hero" class="brand-element flex items-center space-x-2.5 group shrink-0">
+      <div class="w-8 h-8 rounded-full bg-royal flex items-center justify-center text-white font-display font-bold text-xs tracking-wider transition-transform duration-300 group-hover:scale-105 shadow-royal-glow">
+        CMS
+      </div>
+      <div class="brand-text">
+        <span class="font-display font-bold text-charcoal tracking-tight text-xs block leading-none">CROSSMOTIVE</span>
+        <span class="mono-tag text-royal text-[8px] font-semibold">SERVICES</span>
+      </div>
+    </a>
+
+    <!-- Navigation Links (Centered cleanly in both default & scrolled notch states) -->
+    <nav id="navLinks" class="flex items-center space-x-1 sm:space-x-2 text-[11px] font-mono tracking-wider text-charcoal-muted font-medium mx-auto">
+      <a href="#pillars" class="px-2.5 py-1.5 rounded-full hover:text-royal hover:bg-royal-soft transition-all whitespace-nowrap">Pillars</a>
+      <a href="#products" class="px-2.5 py-1.5 rounded-full hover:text-royal hover:bg-royal-soft transition-all whitespace-nowrap">Solutions</a>
+      <a href="#architecture" class="px-2.5 py-1.5 rounded-full hover:text-royal hover:bg-royal-soft transition-all whitespace-nowrap">Architecture</a>
+      <a href="#process" class="hidden sm:inline-block px-2.5 py-1.5 rounded-full hover:text-royal hover:bg-royal-soft transition-all whitespace-nowrap">Process</a>
+      <a href="#serve" class="hidden md:inline-block px-2.5 py-1.5 rounded-full hover:text-royal hover:bg-royal-soft transition-all whitespace-nowrap">Clients</a>
+    </nav>
+
+    <!-- Right Side Actions & Status -->
+    <div class="flex items-center space-x-2 shrink-0">
+      
+      <!-- Operational Status Pill (Hidden in scrolled notch mode) -->
+      <div class="live-element hidden xl:flex items-center space-x-2 px-3 py-1 rounded-full bg-royal-soft border border-royal-border">
+        <span class="w-2 h-2 rounded-full bg-royal animate-pulse"></span>
+        <span class="mono-tag text-royal text-[9px] font-semibold">ONLINE</span>
+      </div>
+
+      <!-- Default Large CTA -->
+      <button onclick="openConsultationDrawer()" class="cta-default px-4 py-2 rounded-full bg-charcoal text-white font-sans font-semibold text-xs uppercase tracking-wider hover:bg-royal transition-all duration-300 shadow-subtle-lg hover:scale-105">
+        Start Project ↗
+      </button>
+
+      <!-- Notch Compact CTA (Appears inside the dynamic island on scroll) -->
+      <button onclick="openConsultationDrawer()" class="cta-notch px-3 py-1.5 rounded-full bg-royal text-white font-sans font-bold text-[11px] uppercase tracking-wider hover:bg-royal-dark transition-all shadow-royal-glow">
+        Contact ↗
+      </button>
+
+    </div>
+
+  </header>
+</div>
+
+<main class="relative z-10">
+
+  <!-- HERO SECTION -->
+  <section id="hero" class="pt-36 pb-20 md:pt-44 md:pb-28 bg-white relative hairline-b">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        
+        <!-- Hero Copy -->
+        <div class="lg:col-span-7 space-y-7">
+          
+          <div class="inline-flex items-center space-x-3 px-3.5 py-1.5 rounded-full bg-royal-soft border border-royal-border">
+            <span class="w-2 h-2 rounded-full bg-royal"></span>
+            <span class="mono-tag text-royal font-semibold">CROSSMOTIVE SERVICES // ENTERPRISE IT</span>
+          </div>
+
+          <h1 class="font-display font-extrabold text-5xl sm:text-6xl lg:text-7xl text-charcoal tracking-tight leading-[1.04]">
+            Engineering Resilient <span class="text-royal block">Digital Systems.</span>
+          </h1>
+
+          <p class="text-base sm:text-lg text-charcoal-muted max-w-2xl font-normal leading-relaxed">
+            CrossMotive Services (CMS Tech) delivers full-spectrum IT software engineering—building enterprise headless CMS, multi-tenant SaaS engines, native mobile apps, and high-throughput cloud databases.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4 pt-2">
+            <a href="#pillars" class="px-7 py-3.5 rounded-full bg-royal text-white font-sans font-semibold text-xs uppercase tracking-wider hover:bg-royal-dark transition-all duration-300 shadow-royal-glow hover:scale-105">
+              Explore 8 Capabilities ↗
+            </a>
+            <a href="#architecture" class="px-7 py-3.5 rounded-full bg-canvas-warm border border-canvas-border text-charcoal hover:border-royal font-sans font-semibold text-xs uppercase tracking-wider transition-all hover:scale-105">
+              Inspect Layer Stack
+            </a>
+          </div>
+
+          <!-- Hero Metrics Bar -->
+          <div class="grid grid-cols-3 gap-6 pt-6 hairline-t max-w-xl">
+            <div>
+              <div class="font-display font-bold text-2xl text-charcoal">99.99%</div>
+              <div class="mono-tag text-charcoal-subtle mt-1">Uptime SLA</div>
+            </div>
+            <div>
+              <div class="font-display font-bold text-2xl text-royal">8 Modules</div>
+              <div class="mono-tag text-charcoal-subtle mt-1">SaaS Architecture</div>
+            </div>
+            <div>
+              <div class="font-display font-bold text-2xl text-charcoal">&lt;20ms</div>
+              <div class="mono-tag text-charcoal-subtle mt-1">Edge Latency</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Interactive System Preview Card -->
+        <div class="lg:col-span-5">
+          <div class="organic-card p-6 shadow-subtle-lg relative">
+            
+            <div class="flex items-center justify-between pb-4 hairline-b mb-5">
+              <div class="flex items-center space-x-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-royal"></span>
+                <span class="mono-tag text-charcoal font-bold">TELEMETRY MATRIX</span>
+              </div>
+              <span class="mono-tag text-royal text-[10px] font-bold">NODE-CMS-01</span>
+            </div>
+
+            <!-- Code Preview Box -->
+            <div class="bg-charcoal rounded-xl p-5 text-white font-mono text-xs space-y-3 shadow-inner">
+              <div class="flex justify-between text-slate-400 text-[11px] pb-2 border-b border-white/10">
+                <span>crossmotive-system.config.ts</span>
+                <span class="text-emerald-400 font-bold">SYS_ONLINE</span>
+              </div>
+              <pre class="text-slate-300 overflow-x-auto leading-relaxed"><code><span class="text-royal-bright">import</span> { CMSCore } <span class="text-royal-bright">from</span> <span class="text-emerald-300">'@crossmotive/core'</span>;
+
+<span class="text-royal-bright">export const</span> enterpriseStack = {
+  <span class="text-slate-400">cms:</span> <span class="text-amber-300">'OmniHeadless Matrix v4.2'</span>,
+  <span class="text-slate-400">database:</span> <span class="text-amber-300">'PostgreSQL Data Lake'</span>,
+  <span class="text-slate-400">security:</span> <span class="text-amber-300">'SOC-2 / SAML 2.0 Auth'</span>,
+  <span class="text-slate-400">throughput:</span> <span class="text-emerald-400">'50,000 req/sec'</span>
+};</code></pre>
+            </div>
+
+            <!-- Interactive Runtime Toggle Buttons -->
+            <div class="grid grid-cols-2 gap-3 mt-5">
+              <button onclick="updateHeroPreview('mesh')" class="p-3 rounded-xl bg-canvas-warm border border-canvas-border text-left hover:border-royal transition-all">
+                <span class="mono-tag text-royal block font-bold">TIER 01</span>
+                <span class="text-xs font-semibold text-charcoal">Microservices Mesh</span>
+              </button>
+              <button onclick="updateHeroPreview('cache')" class="p-3 rounded-xl bg-canvas-warm border border-canvas-border text-left hover:border-royal transition-all">
+                <span class="mono-tag text-charcoal-subtle block font-bold">TIER 02</span>
+                <span class="text-xs font-semibold text-charcoal">Redis Cache Lake</span>
+              </button>
+            </div>
+
+            <div id="heroPreviewLog" class="mt-4 p-3 rounded-xl bg-royal-soft border border-royal-border font-mono text-[11px] text-royal flex items-center justify-between">
+              <span>Selected: Microservices Mesh active with zero packet loss.</span>
+              <span class="font-bold">2.4ms</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CORE 8 IT CAPABILITIES PILLARS -->
+  <section id="pillars" class="py-24 bg-canvas-warm hairline-b">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-14">
+        <div>
+          <span class="mono-tag text-royal font-semibold">01 // TECHNICAL CAPABILITIES</span>
+          <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-charcoal mt-2">8 Core Engineering Pillars</h2>
+        </div>
+        <p class="text-charcoal-muted max-w-md text-sm mt-3 md:mt-0 font-normal leading-relaxed">
+          Full-spectrum software architecture built for performance, security, and scalable expansion.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Pillar 1 -->
+        <div class="organic-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="w-9 h-9 rounded-xl bg-royal-soft border border-royal-border flex items-center justify-center text-royal font-mono font-bold text-xs mb-4">01</div>
+            <h3 class="font-display font-bold text-base text-charcoal mb-2">Custom Enterprise CMS</h3>
+            <p class="text-xs text-charcoal-muted leading-relaxed font-normal">Headless content engines with multi-tenant permissions, localized publishing, and GraphQL flexibility.</p>
+          </div>
+          <div class="mono-tag text-royal mt-5 font-semibold">HEADLESS PLATFORMS</div>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="organic-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="w-9 h-9 rounded-xl bg-canvas-warm border border-canvas-border flex items-center justify-center text-charcoal font-mono font-bold text-xs mb-4">02</div>
+            <h3 class="font-display font-bold text-base text-charcoal mb-2">Multi-Tenant SaaS</h3>
+            <p class="text-xs text-charcoal-muted leading-relaxed font-normal">Scalable subscription platforms engineered with schema isolation, usage analytics, and Stripe billing engines.</p>
+          </div>
+          <div class="mono-tag text-charcoal-subtle mt-5">SAAS ARCHITECTURE</div>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="organic-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="w-9 h-9 rounded-xl bg-canvas-warm border border-canvas-border flex items-center justify-center text-charcoal font-mono font-bold text-xs mb-4">03</div>
+            <h3 class="font-display font-bold text-base text-charcoal mb-2">Cloud Database Systems</h3>
+            <p class="text-xs text-charcoal-muted leading-relaxed font-normal">High-speed PostgreSQL clusters, Redis caching layers, and real-time analytical data lake pipelines.</p>
+          </div>
+          <div class="mono-tag text-charcoal-subtle mt-5">HIGH-THROUGHPUT DATA</div>
+        </div>
+
+        <!-- Pillar 4 -->
+        <div class="organic-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="w-9 h-9 rounded-xl bg-canvas-warm border border-canvas-border flex items-center justify-center text-charcoal font-mono font-bold text-xs mb-4">04</div>
+            <h3 class="font-display font-bold text-base text-charcoal mb-2">Web Applications</h3>
+            <p class="text-xs text-charcoal-muted leading-relaxed font-normal">High-performance Progressive Web Apps built with Next.js, Server-Side Rendering, and edge CDN deployments.</p>
+          </div>
+          <div class="mono-tag text-charcoal-subtle mt-5">ULTRA-FAST SSR</div>
+        </div>
+
+        <!-- Pillar 5 -->
+        <div class="organic-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="w-9 h-9 rounded-xl bg-canvas-warm border border-canvas-border flex items-center justify-center text-charcoal font-mono font-bold text-xs mb-4">05</div>
+            <h3 class="font-display font-bold text-base text-charcoal mb-2">Mobile Engineering</h3>
+            <p class="text-xs text-charcoal-muted leading-relaxed font-normal">Native Swift (iOS) & Kotlin (Android) apps alongside high-performance React Native and Flutter builds.</p>
+          </div>
+          <div class="mono-tag text-charcoal-subtle mt-5">IOS & ANDROID NATIVE</div>
+        </div>
+
+        <!-- Pillar 6 -->
+        <div class="organic-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="w-9 h-9 rounded-xl bg-canvas-warm border border-canvas-border flex items-center justify-center text-charcoal font-mono font-bold text-xs mb-4">06</div>
+            <h3 class="font-display font-bold text-base text-charcoal mb-2">AI Agents & RAG</h3>
+            <p class="text-xs text-charcoal-muted leading-relaxed font-normal">LLM integration, custom retrieval-augmented generation pipelines, and vector database query acceleration.</p>
+          </div>
+          <div class="mono-tag text-charcoal-subtle mt-5">INTELLIGENT AGENTS</div>
+        </div>
+
+        <!-- Pillar 7 -->
+        <div class="organic-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="w-9 h-9 rounded-xl bg-canvas-warm border border-canvas-border flex items-center justify-center text-charcoal font-mono font-bold text-xs mb-4">07</div>
+            <h3 class="font-display font-bold text-base text-charcoal mb-2">Microservices & APIs</h3>
+            <p class="text-xs text-charcoal-muted leading-relaxed font-normal">Decoupled RESTful & GraphQL API gateways, asynchronous event broker messaging, and legacy integrations.</p>
+          </div>
+          <div class="mono-tag text-charcoal-subtle mt-5">API GATEWAY SYSTEMS</div>
+        </div>
+
+        <!-- Pillar 8 -->
+        <div class="organic-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="w-9 h-9 rounded-xl bg-canvas-warm border border-canvas-border flex items-center justify-center text-charcoal font-mono font-bold text-xs mb-4">08</div>
+            <h3 class="font-display font-bold text-base text-charcoal mb-2">UI/UX Architecture</h3>
+            <p class="text-xs text-charcoal-muted leading-relaxed font-normal">Accessible design systems, high-density dashboard user experience layouts, and modular component libraries.</p>
+          </div>
+          <div class="mono-tag text-charcoal-subtle mt-5">DESIGN SYSTEMS</div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 8 SAAS & CMS PRODUCT SOLUTIONS MATRIX -->
+  <section id="products" class="py-24 bg-white hairline-b">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-14">
+        <div>
+          <span class="mono-tag text-royal font-semibold">02 // READY SOLUTIONS MATRIX</span>
+          <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-charcoal mt-2">8 Ready Product Modules</h2>
+        </div>
+        
+        <!-- Filter Tabs -->
+        <div class="flex flex-wrap gap-2 mt-5 md:mt-0">
+          <button onclick="filterProducts('all', this)" class="prod-filter-btn px-4 py-1.5 rounded-full border border-royal bg-royal text-white font-mono text-xs font-semibold">ALL (8)</button>
+          <button onclick="filterProducts('cms', this)" class="prod-filter-btn px-4 py-1.5 rounded-full border border-canvas-border bg-canvas-warm text-charcoal-muted hover:text-charcoal font-mono text-xs">CMS & PORTALS</button>
+          <button onclick="filterProducts('saas', this)" class="prod-filter-btn px-4 py-1.5 rounded-full border border-canvas-border bg-canvas-warm text-charcoal-muted hover:text-charcoal font-mono text-xs">SAAS ENGINES</button>
+        </div>
+      </div>
+
+      <!-- 8 Products Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="productGrid">
+        
+        <!-- Product 1 -->
+        <div class="prod-card cms organic-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center mb-3">
+              <span class="mono-tag text-royal font-bold">MOD 01</span>
+              <span class="mono-tag text-charcoal-subtle">ENTERPRISE CMS</span>
+            </div>
+            <h3 class="font-display font-bold text-base text-charcoal mb-2">OmniCMS Headless</h3>
+            <p class="text-xs text-charcoal-muted mb-5 leading-relaxed">Multi-tenant headless content management system with instant GraphQL API generation.</p>
+          </div>
+          <button onclick="openProductDrawer(1)" class="w-full py-2 rounded-full border border-royal text-royal hover:bg-royal hover:text-white font-mono text-xs font-semibold transition-all">INSPECT STACK ↗</button>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="prod-card saas organic-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center mb-3">
+              <span class="mono-tag text-royal font-bold">MOD 02</span>
+              <span class="mono-tag text-charcoal-subtle">DATA LAKE</span>
+            </div>
+            <h3 class="font-display font-bold text-base text-charcoal mb-2">Atlas Cloud Lake</h3>
+            <p class="text-xs text-charcoal-muted mb-5 leading-relaxed">High-throughput data streaming platform with real-time PostgreSQL synchronization.</p>
+          </div>
+          <button onclick="openProductDrawer(2)" class="w-full py-2 rounded-full border border-royal text-royal hover:bg-royal hover:text-white font-mono text-xs font-semibold transition-all">INSPECT STACK ↗</button>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="prod-card cms organic-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center mb-3">
+              <span class="mono-tag text-royal font-bold">MOD 03</span>
+              <span class="mono-tag text-charcoal-subtle">MOBILE SUITE</span>
+            </div>
+            <h3 class="font-display font-bold text-base text-charcoal mb-2">FieldSync Mobile</h3>
+            <p class="text-xs text-charcoal-muted mb-5 leading-relaxed">Offline-first native mobile application engine for field operations and real-time telemetry.</p>
+          </div>
+          <button onclick="openProductDrawer(3)" class="w-full py-2 rounded-full border border-royal text-royal hover:bg-royal hover:text-white font-mono text-xs font-semibold transition-all">INSPECT STACK ↗</button>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="prod-card saas organic-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center mb-3">
+              <span class="mono-tag text-royal font-bold">MOD 04</span>
+              <span class="mono-tag text-charcoal-subtle">AUTOMATION</span>
+            </div>
+            <h3 class="font-display font-bold text-base text-charcoal mb-2">Workflow Hub Engine</h3>
+            <p class="text-xs text-charcoal-muted mb-5 leading-relaxed">Event-driven workflow engine with low-code trigger orchestration and webhook handlers.</p>
+          </div>
+          <button onclick="openProductDrawer(4)" class="w-full py-2 rounded-full border border-royal text-royal hover:bg-royal hover:text-white font-mono text-xs font-semibold transition-all">INSPECT STACK ↗</button>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="prod-card cms organic-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center mb-3">
+              <span class="mono-tag text-royal font-bold">MOD 05</span>
+              <span class="mono-tag text-charcoal-subtle">CLIENT PORTAL</span>
+            </div>
+            <h3 class="font-display font-bold text-base text-charcoal mb-2">Nexus Portal System</h3>
+            <p class="text-xs text-charcoal-muted mb-5 leading-relaxed">Secure client portal featuring subscription management, automated billing, and RBAC security.</p>
+          </div>
+          <button onclick="openProductDrawer(5)" class="w-full py-2 rounded-full border border-royal text-royal hover:bg-royal hover:text-white font-mono text-xs font-semibold transition-all">INSPECT STACK ↗</button>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="prod-card saas organic-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center mb-3">
+              <span class="mono-tag text-royal font-bold">MOD 06</span>
+              <span class="mono-tag text-charcoal-subtle">API GATEWAY</span>
+            </div>
+            <h3 class="font-display font-bold text-base text-charcoal mb-2">Aether API Proxy</h3>
+            <p class="text-xs text-charcoal-muted mb-5 leading-relaxed">High-performance microservices gateway featuring rate limiting, OAuth2, and analytics monitoring.</p>
+          </div>
+          <button onclick="openProductDrawer(6)" class="w-full py-2 rounded-full border border-royal text-royal hover:bg-royal hover:text-white font-mono text-xs font-semibold transition-all">INSPECT STACK ↗</button>
+        </div>
+
+        <!-- Product 7 -->
+        <div class="prod-card saas organic-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center mb-3">
+              <span class="mono-tag text-royal font-bold">MOD 07</span>
+              <span class="mono-tag text-charcoal-subtle">AI & RAG</span>
+            </div>
+            <h3 class="font-display font-bold text-base text-charcoal mb-2">Cognitive RAG Agent</h3>
+            <p class="text-xs text-charcoal-muted mb-5 leading-relaxed">Vector retrieval AI system for semantic document search and enterprise knowledge retrieval.</p>
+          </div>
+          <button onclick="openProductDrawer(7)" class="w-full py-2 rounded-full border border-royal text-royal hover:bg-royal hover:text-white font-mono text-xs font-semibold transition-all">INSPECT STACK ↗</button>
+        </div>
+
+        <!-- Product 8 -->
+        <div class="prod-card cms organic-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center mb-3">
+              <span class="mono-tag text-royal font-bold">MOD 08</span>
+              <span class="mono-tag text-charcoal-subtle">SECURITY IAM</span>
+            </div>
+            <h3 class="font-display font-bold text-base text-charcoal mb-2">Sentry SSO Engine</h3>
+            <p class="text-xs text-charcoal-muted mb-5 leading-relaxed">Central identity and access management server supporting SAML 2.0, OAuth, and MFA security.</p>
+          </div>
+          <button onclick="openProductDrawer(8)" class="w-full py-2 rounded-full border border-royal text-royal hover:bg-royal hover:text-white font-mono text-xs font-semibold transition-all">INSPECT STACK ↗</button>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ENTERPRISE ARCHITECTURE VISUALIZER -->
+  <section id="architecture" class="py-24 bg-canvas-warm hairline-b">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="mono-tag text-royal font-semibold">03 // SYSTEM ARCHITECTURE</span>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-charcoal mt-2">Enterprise Layer Visualizer</h2>
+        <p class="text-charcoal-muted mt-2 text-sm font-normal">
+          Click any architecture tier to inspect component dependencies and telemetry protocols.
+        </p>
+      </div>
+
+      <div class="space-y-4 max-w-4xl mx-auto">
+        
+        <!-- Layer 1 -->
+        <div onclick="selectArchLayer(1)" class="arch-layer-card organic-card p-6 cursor-pointer border-l-4 border-l-royal">
+          <div class="flex justify-between items-center mb-1">
+            <span class="mono-tag text-royal font-bold">LAYER 01 // PRESENTATION & UX</span>
+            <span class="mono-tag text-charcoal-subtle">NEXT.JS 14 / SWIFT / FLUTTER</span>
+          </div>
+          <h3 class="font-display font-bold text-xl text-charcoal">Client Experience Tier</h3>
+          <p class="text-xs text-charcoal-muted mt-1 font-normal">Edge-rendered web platforms, native mobile clients, and high-density dashboard interfaces.</p>
+        </div>
+
+        <!-- Layer 2 -->
+        <div onclick="selectArchLayer(2)" class="arch-layer-card organic-card p-6 cursor-pointer border-l-4 border-l-charcoal">
+          <div class="flex justify-between items-center mb-1">
+            <span class="mono-tag text-charcoal font-bold">LAYER 02 // APPLICATION SERVICES</span>
+            <span class="mono-tag text-charcoal-subtle">GO / NODE.JS / GRAPHQL</span>
+          </div>
+          <h3 class="font-display font-bold text-xl text-charcoal">Microservices & API Gateway</h3>
+          <p class="text-xs text-charcoal-muted mt-1 font-normal">Decoupled microservice proxies, rate limiting, and event bus orchestration.</p>
+        </div>
+
+        <!-- Layer 3 -->
+        <div onclick="selectArchLayer(3)" class="arch-layer-card organic-card p-6 cursor-pointer border-l-4 border-l-charcoal">
+          <div class="flex justify-between items-center mb-1">
+            <span class="mono-tag text-charcoal font-bold">LAYER 03 // DATA PERSISTENCE</span>
+            <span class="mono-tag text-charcoal-subtle">POSTGRESQL / REDIS / PINECONE</span>
+          </div>
+          <h3 class="font-display font-bold text-xl text-charcoal">Persistence & Vector Data Lake</h3>
+          <p class="text-xs text-charcoal-muted mt-1 font-normal">ACID-compliant relational database clusters, vector embeddings, and multi-node Redis caching.</p>
+        </div>
+
+        <!-- Layer 4 -->
+        <div onclick="selectArchLayer(4)" class="arch-layer-card organic-card p-6 cursor-pointer border-l-4 border-l-charcoal">
+          <div class="flex justify-between items-center mb-1">
+            <span class="mono-tag text-charcoal font-bold">LAYER 04 // CLOUD ORCHESTRATION</span>
+            <span class="mono-tag text-charcoal-subtle">AWS / KUBERNETES / TERRAFORM</span>
+          </div>
+          <h3 class="font-display font-bold text-xl text-charcoal">Infrastructure & Cloud Security</h3>
+          <p class="text-xs text-charcoal-muted mt-1 font-normal">Multi-region cloud infrastructure, automated CI/CD deployment pipelines, and zero-trust IAM security.</p>
+        </div>
+
+      </div>
+
+      <!-- Live Inspection Log Output -->
+      <div class="max-w-4xl mx-auto mt-6 p-4 rounded-xl bg-charcoal text-white font-mono text-xs flex justify-between items-center shadow-lg">
+        <span id="archLogOutput" class="text-slate-300">Selected: Layer 01 Presentation active. Latency: 12ms.</span>
+        <span class="text-emerald-400 font-bold">SYS_HEALTHY</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WORKING PROCESS / METHODOLOGY -->
+  <section id="process" class="py-24 bg-white hairline-b">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="mono-tag text-royal font-semibold">04 // DELIVERY METHODOLOGY</span>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-charcoal mt-2">Engineered 4-Step Process</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <div class="organic-card p-6">
+          <span class="w-8 h-8 rounded-full bg-royal text-white font-mono text-xs font-bold flex items-center justify-center mb-4">01</span>
+          <h3 class="font-display font-bold text-base text-charcoal mb-2">Discovery & Schema</h3>
+          <p class="text-xs text-charcoal-muted leading-relaxed font-normal">Defining system domain models, data schemas, API contracts, and non-functional scalability targets.</p>
+        </div>
+
+        <div class="organic-card p-6">
+          <span class="w-8 h-8 rounded-full bg-canvas-warm border border-canvas-border text-charcoal font-mono text-xs font-bold flex items-center justify-center mb-4">02</span>
+          <h3 class="font-display font-bold text-base text-charcoal mb-2">Architecture Blueprint</h3>
+          <p class="text-xs text-charcoal-muted leading-relaxed font-normal">Mapping microservice boundaries, UI design token system, and cloud deployment topology.</p>
+        </div>
+
+        <div class="organic-card p-6">
+          <span class="w-8 h-8 rounded-full bg-canvas-warm border border-canvas-border text-charcoal font-mono text-xs font-bold flex items-center justify-center mb-4">03</span>
+          <h3 class="font-display font-bold text-base text-charcoal mb-2">Iterative Build Sprints</h3>
+          <p class="text-xs text-charcoal-muted leading-relaxed font-normal">Bi-weekly engineering sprints with continuous automated integration, code reviews, and staging previews.</p>
+        </div>
+
+        <div class="organic-card p-6">
+          <span class="w-8 h-8 rounded-full bg-canvas-warm border border-canvas-border text-charcoal font-mono text-xs font-bold flex items-center justify-center mb-4">04</span>
+          <h3 class="font-display font-bold text-base text-charcoal mb-2">Production Launch</h3>
+          <p class="text-xs text-charcoal-muted leading-relaxed font-normal">Zero-downtime deployment, automated failover setup, performance monitoring, and SLA maintenance.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WHO WE SERVE -->
+  <section id="serve" class="py-24 bg-canvas-warm">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="mono-tag text-royal font-semibold">05 // TARGET CLIENTELE</span>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-charcoal mt-2">Tailored for Scale</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <div class="organic-card p-6">
+          <div class="mono-tag text-royal mb-3 font-semibold">01 // ENTERPRISE</div>
+          <h3 class="font-display font-bold text-base text-charcoal mb-2">Enterprise Corporations</h3>
+          <p class="text-xs text-charcoal-muted leading-relaxed font-normal">Modernizing legacy infrastructure into decoupled microservices and headless CMS portals.</p>
+        </div>
+
+        <div class="organic-card p-6">
+          <div class="mono-tag text-charcoal-subtle mb-3">02 // SCALE-UPS</div>
+          <h3 class="font-display font-bold text-base text-charcoal mb-2">Fast-Growth SaaS</h3>
+          <p class="text-xs text-charcoal-muted leading-relaxed font-normal">Refactoring monolithic codebases for high throughput, low latency, and multi-tenant expansion.</p>
+        </div>
+
+        <div class="organic-card p-6">
+          <div class="mono-tag text-charcoal-subtle mb-3">03 // FOUNDATIONS</div>
+          <h3 class="font-display font-bold text-base text-charcoal mb-2">Digital Founders</h3>
+          <p class="text-xs text-charcoal-muted leading-relaxed font-normal">Building mission-critical MVP platforms with enterprise-grade security from day one.</p>
+        </div>
+
+        <div class="organic-card p-6">
+          <div class="mono-tag text-charcoal-subtle mb-3">04 // PARTNERS</div>
+          <h3 class="font-display font-bold text-base text-charcoal mb-2">Strategic Partnerships</h3>
+          <p class="text-xs text-charcoal-muted leading-relaxed font-normal">Dedicated senior engineering squads executing specialized cloud or mobile initiatives.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-charcoal text-white py-14 hairline-t text-xs font-mono">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-6">
+    
+    <div class="flex items-center space-x-3">
+      <div class="w-8 h-8 rounded-full bg-royal flex items-center justify-center text-white font-display font-bold text-xs">CMS</div>
+      <span class="font-display font-bold text-sm text-white tracking-wide">CrossMotive Services</span>
+    </div>
+
+    <div class="text-slate-400">
+      CrossMotive Services (CMS Tech) &copy; <span id="year"></span>. All rights reserved.
+    </div>
+
+    <div class="flex space-x-6 text-slate-300">
+      <a href="#pillars" class="hover:text-royal-bright transition-colors">Pillars</a>
+      <a href="#products" class="hover:text-royal-bright transition-colors">Solutions</a>
+      <a href="#architecture" class="hover:text-royal-bright transition-colors">Architecture</a>
+      <button onclick="openConsultationDrawer()" class="text-royal-bright font-bold hover:underline">Start Project ↗</button>
+    </div>
+
+  </div>
+</footer>
+
+<!-- PRODUCT INSPECTOR SIDE DRAWER -->
+<div id="productDrawer" class="fixed inset-0 z-50 hidden flex justify-end bg-charcoal/60 backdrop-blur-md">
+  <div class="w-full max-w-xl bg-white border-l border-canvas-border p-7 sm:p-9 flex flex-col justify-between overflow-y-auto shadow-2xl">
+    <div>
+      <div class="flex justify-between items-start pb-5 hairline-b mb-6">
+        <div>
+          <span id="drawerModCat" class="mono-tag text-royal font-bold">MODULE SPECIFICATION</span>
+          <h3 id="drawerModTitle" class="font-display font-bold text-2xl text-charcoal mt-1">Product Title</h3>
+        </div>
+        <button onclick="closeProductDrawer()" class="text-charcoal-subtle hover:text-charcoal text-2xl font-mono">&times;</button>
+      </div>
+
+      <div class="space-y-6 text-sm">
+        <p id="drawerModDesc" class="text-charcoal-muted font-normal leading-relaxed">System overview details will appear here.</p>
+
+        <div class="p-5 rounded-2xl bg-canvas-warm border border-canvas-border">
+          <div class="mono-tag text-charcoal mb-3 font-bold">RECOMMENDED TECH STACK</div>
+          <div id="drawerModStack" class="flex flex-wrap gap-2">
+            <!-- Dynamic stack tags -->
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div class="p-4 rounded-2xl bg-canvas-warm border border-canvas-border">
+            <div class="mono-tag text-charcoal-subtle">SECURITY CERTIFICATION</div>
+            <div id="drawerModSecurity" class="font-mono text-sm font-bold text-royal mt-1">SOC-2 Type II</div>
+          </div>
+          <div class="p-4 rounded-2xl bg-canvas-warm border border-canvas-border">
+            <div class="mono-tag text-charcoal-subtle">ESTIMATED DEPLOYMENT</div>
+            <div id="drawerModDeploy" class="font-mono text-sm font-bold text-charcoal mt-1">3-4 Weeks</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-6 hairline-t flex justify-between items-center">
+      <button onclick="closeProductDrawer()" class="font-mono text-xs text-charcoal-subtle hover:text-charcoal">CLOSE</button>
+      <button onclick="closeProductDrawer(); openConsultationDrawer();" class="px-6 py-3 rounded-full bg-royal text-white font-sans font-semibold text-xs uppercase tracking-wider hover:bg-royal-dark transition-all">
+        DISCOVERY BLUEPRINT ↗
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- CONSULTATION FORM MODAL -->
+<div id="consultationModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-charcoal/70 backdrop-blur-md">
+  <div class="bg-white max-w-lg w-full p-7 sm:p-9 rounded-3xl shadow-2xl relative border border-canvas-border">
+    <div class="flex justify-between items-center pb-4 hairline-b mb-6">
+      <div>
+        <span class="mono-tag text-royal font-bold">BUILD DISCOVERY</span>
+        <h3 class="font-display font-bold text-2xl text-charcoal mt-1">Initiate Project</h3>
+      </div>
+      <button onclick="closeConsultationDrawer()" class="text-charcoal-subtle hover:text-charcoal text-2xl font-mono">&times;</button>
+    </div>
+
+    <form id="consultationForm" onsubmit="handleConsultationSubmit(event)" class="space-y-4">
+      <div>
+        <label class="block mono-tag text-charcoal-subtle mb-1.5">FULL NAME *</label>
+        <input type="text" required placeholder="Alexander Wright" class="w-full px-4 py-3 rounded-xl bg-canvas-warm border border-canvas-border text-charcoal text-sm focus:outline-none focus:border-royal">
+      </div>
+
+      <div>
+        <label class="block mono-tag text-charcoal-subtle mb-1.5">WORK EMAIL *</label>
+        <input type="email" required placeholder="alex@company.com" class="w-full px-4 py-3 rounded-xl bg-canvas-warm border border-canvas-border text-charcoal text-sm focus:outline-none focus:border-royal">
+      </div>
+
+      <div>
+        <label class="block mono-tag text-charcoal-subtle mb-1.5">PRIMARY SERVICE *</label>
+        <select required class="w-full px-4 py-3 rounded-xl bg-canvas-warm border border-canvas-border text-charcoal text-sm focus:outline-none focus:border-royal">
+          <option value="Custom Enterprise CMS">Custom Enterprise CMS</option>
+          <option value="Multi-Tenant SaaS">Multi-Tenant SaaS Architecture</option>
+          <option value="Cloud Databases">Cloud Database Systems</option>
+          <option value="Web Applications">Web Applications Engineering</option>
+          <option value="Mobile Engineering">Native iOS & Android Mobile</option>
+          <option value="AI Integration">AI Agents & RAG Integration</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block mono-tag text-charcoal-subtle mb-1.5">PROJECT SCOPE & TIMELINE</label>
+        <textarea rows="3" placeholder="Briefly summarize technical scope or objectives..." class="w-full px-4 py-3 rounded-xl bg-canvas-warm border border-canvas-border text-charcoal text-sm focus:outline-none focus:border-royal"></textarea>
+      </div>
+
+      <button type="submit" class="w-full py-3.5 rounded-full bg-royal text-white font-sans font-semibold text-xs uppercase tracking-wider hover:bg-royal-dark transition-all">
+        SUBMIT DISCOVERY REQUEST ↗
+      </button>
+    </form>
+
+    <div id="consultationSuccess" class="hidden text-center py-8 space-y-3">
+      <div class="w-12 h-12 rounded-full bg-royal-soft text-royal flex items-center justify-center mx-auto text-xl font-bold">✓</div>
+      <h4 class="font-display font-bold text-xl text-charcoal">Request Dispatched</h4>
+      <p class="text-xs text-charcoal-muted">A senior solutions architect from CrossMotive Services will contact you within 24 hours.</p>
+      <button onclick="resetConsultationForm()" class="px-5 py-2 rounded-full border border-canvas-border text-xs font-mono text-charcoal-subtle hover:text-charcoal">RESET</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- JAVASCRIPT LOGIC -->
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // DYNAMIC ISLAND SCROLL INTERACTION LOGIC
+  const navWrapper = document.getElementById('navWrapper');
+  
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      navWrapper.classList.remove('nav-header-default');
+      navWrapper.classList.add('nav-header-scrolled');
+    } else {
+      navWrapper.classList.remove('nav-header-scrolled');
+      navWrapper.classList.add('nav-header-default');
+    }
+  });
+
+  // Hero Runtime Preview Controller
+  function updateHeroPreview(type) {
+    const log = document.getElementById('heroPreviewLog');
+    if (type === 'mesh') {
+      log.innerHTML = `<span>Selected: Microservices Mesh active with zero packet loss.</span><span class="font-bold">2.4ms</span>`;
+    } else {
+      log.innerHTML = `<span>Selected: Redis Cache Lake active (99.8% cache hit ratio).</span><span class="font-bold">0.8ms</span>`;
+    }
+  }
+
+  // 8 SaaS & CMS Product Drawer Data
+  const productData = {
+    1: {
+      title: "OmniCMS Headless",
+      category: "ENTERPRISE CMS",
+      desc: "Designed for enterprise multi-brand web properties requiring rapid, localized content publishing across web, mobile, and digital kiosks.",
+      stack: ["Next.js 14", "GraphQL API", "PostgreSQL", "Redis"],
+      security: "SOC-2 Type II Certified",
+      deploy: "3-4 Weeks"
+    },
+    2: {
+      title: "Atlas Cloud Lake",
+      category: "DATA WAREHOUSE",
+      desc: "High-throughput data streaming platform syncing analytics events with sub-second aggregate query resolution.",
+      stack: ["ClickHouse", "Go", "Kafka", "Redis Cache"],
+      security: "ISO 27001 Certified",
+      deploy: "4 Weeks"
+    },
+    3: {
+      title: "FieldSync Mobile",
+      category: "MOBILE SUITE",
+      desc: "Offline-first native mobile application suite with cryptographic offline transaction synchronization.",
+      stack: ["Swift (iOS)", "Kotlin (Android)", "SQLite", "AWS SNS"],
+      security: "AES-256 Encrypted",
+      deploy: "4-6 Weeks"
+    },
+    4: {
+      title: "Workflow Hub Engine",
+      category: "SAAS AUTOMATION",
+      desc: "Event-driven microservices workflow engine with low-code trigger configuration and asynchronous queueing.",
+      stack: ["Go Engine", "RabbitMQ", "Kubernetes", "Vue 3"],
+      security: "OAuth2 & SAML 2.0",
+      deploy: "3 Weeks"
+    },
+    5: {
+      title: "Nexus Portal System",
+      category: "CLIENT PORTAL",
+      desc: "Secure customer management portal featuring automated billing, subscription tiers, and encrypted file sharing.",
+      stack: ["React", "Tailwind CSS", "Node.js", "Stripe API"],
+      security: "PCI-DSS Level 1",
+      deploy: "3-4 Weeks"
+    },
+    6: {
+      title: "Aether API Proxy",
+      category: "API GATEWAY",
+      desc: "High-performance microservices API proxy handling rate limiting, JWT auth token verification, and telemetry.",
+      stack: ["Go", "Envoy Proxy", "Redis", "Prometheus"],
+      security: "WAF Protected",
+      deploy: "2 Weeks"
+    },
+    7: {
+      title: "Cognitive RAG Agent",
+      category: "AI / RAG ENGINE",
+      desc: "Retrieval-augmented generation engine powering accurate semantic knowledge search across corporate repositories.",
+      stack: ["Python", "Pinecone Vector DB", "OpenAI API", "FastAPI"],
+      security: "Zero Retention SLA",
+      deploy: "3 Weeks"
+    },
+    8: {
+      title: "Sentry SSO Engine",
+      category: "SECURITY IAM",
+      desc: "Identity access management server featuring single sign-on, WebAuthn biometric security, and SAML 2.0 integration.",
+      stack: ["Node.js", "SAML 2.0", "OpenID Connect", "Redis"],
+      security: "FIPS 140-2 Compliant",
+      deploy: "3 Weeks"
+    }
+  };
+
+  function openProductDrawer(id) {
+    const item = productData[id];
+    if (!item) return;
+
+    document.getElementById('drawerModTitle').textContent = item.title;
+    document.getElementById('drawerModCat').textContent = item.category;
+    document.getElementById('drawerModDesc').textContent = item.desc;
+    document.getElementById('drawerModSecurity').textContent = item.security;
+    document.getElementById('drawerModDeploy').textContent = item.deploy;
+
+    const stackContainer = document.getElementById('drawerModStack');
+    stackContainer.innerHTML = item.stack.map(s => `<span class="px-3 py-1 rounded-lg bg-white border border-canvas-border text-royal font-mono text-xs font-bold">${s}</span>`).join('');
+
+    document.getElementById('productDrawer').classList.remove('hidden');
+  }
+
+  function closeProductDrawer() {
+    document.getElementById('productDrawer').classList.add('hidden');
+  }
+
+  // Filter Products Matrix
+  function filterProducts(cat, btn) {
+    const buttons = document.querySelectorAll('.prod-filter-btn');
+    buttons.forEach(b => {
+      b.classList.remove('border-royal', 'bg-royal', 'text-white');
+      b.classList.add('border-canvas-border', 'bg-canvas-warm', 'text-charcoal-muted');
+    });
+
+    btn.classList.remove('border-canvas-border', 'bg-canvas-warm', 'text-charcoal-muted');
+    btn.classList.add('border-royal', 'bg-royal', 'text-white');
+
+    const cards = document.querySelectorAll('.prod-card');
+    cards.forEach(card => {
+      if (cat === 'all' || card.classList.contains(cat)) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  // Architecture Layer Inspection Selection
+  const archLogs = {
+    1: "Selected: Layer 01 Client Experience Tier active (SSR Edge rendering < 12ms).",
+    2: "Selected: Layer 02 Microservices & API Gateway active (Go proxy routing OK).",
+    3: "Selected: Layer 03 Persistence Tier active (PostgreSQL & Redis Lake OK).",
+    4: "Selected: Layer 04 Cloud Infrastructure active (AWS EKS & Terraform OK)."
+  };
+
+  function selectArchLayer(id) {
+    const cards = document.querySelectorAll('.arch-layer-card');
+    cards.forEach(c => {
+      c.classList.remove('border-l-royal');
+      c.classList.add('border-l-charcoal');
+    });
+
+    cards[id - 1].classList.remove('border-l-charcoal');
+    cards[id - 1].classList.add('border-l-royal');
+
+    document.getElementById('archLogOutput').textContent = archLogs[id];
+  }
+
+  // Consultation Modal Controller
+  function openConsultationDrawer() {
+    document.getElementById('consultationModal').classList.remove('hidden');
+  }
+
+  function closeConsultationDrawer() {
+    document.getElementById('consultationModal').classList.add('hidden');
+  }
+
+  function handleConsultationSubmit(e) {
+    e.preventDefault();
+    document.getElementById('consultationForm').classList.add('hidden');
+    document.getElementById('consultationSuccess').classList.remove('hidden');
+  }
+
+  function resetConsultationForm() {
+    document.getElementById('consultationForm').reset();
+    document.getElementById('consultationForm').classList.remove('hidden');
+    document.getElementById('consultationSuccess').classList.add('hidden');
+  }
+</script>
+
+</body>
+</html>

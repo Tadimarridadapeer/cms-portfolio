@@ -31,8 +31,8 @@ export function Navbar() {
     setMobileMenuOpen(false);
   }, [pathname]);
 
-  // Don't show public nav inside /admin paths (admin has its own layout)
-  if (pathname.startsWith("/admin")) {
+  // Don't show public nav inside home page (home uses dynamic island notch header) or /admin paths
+  if (pathname === "/" || pathname.startsWith("/admin")) {
     return null;
   }
 

@@ -528,6 +528,27 @@
   ],
   "enquiries": [
     {
+      "full_name": "Dadapeer Test",
+      "email": "dadapeer.personal@gmail.com",
+      "client_category": "Enterprise",
+      "project_type": "Custom Enterprise CMS",
+      "platform": "Both",
+      "description": "Testing the luxury IT studio consultation form submission with INR budget range.",
+      "budget_range": "₹25,000 - ₹50,000 (Starter / MVP)",
+      "timeline": "1-2 Months",
+      "contact_method": "Email",
+      "privacy_consent": true,
+      "meeting_date": null,
+      "meeting_time": null,
+      "timezone": null,
+      "meeting_notes": null,
+      "id": "enq-1794141787420-4397",
+      "reference_code": "CMS-2026-4397",
+      "status": "New",
+      "created_at": "2026-11-08T12:43:07.420Z",
+      "updated_at": "2026-11-08T12:43:07.420Z"
+    },
+    {
       "full_name": "Dada Peer Final Verification",
       "email": "dadapeer.personal@gmail.com",
       "company_name": "Cross Motive Services",

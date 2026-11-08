@@ -1,8 +1,92 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Dynamic Island Notch & Luxury IT Studio Architecture */
+#navWrapper {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-header-default {
+  width: 100%;
+  max-width: 80rem;
+  padding: 0.85rem 1.5rem;
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 9999px;
+  box-shadow: 0 4px 20px -5px rgba(0,0,0,0.03);
+}
+
+.nav-header-scrolled {
+  width: min(520px, calc(100vw - 2rem));
+  padding: 0.45rem 0.65rem 0.45rem 1.1rem;
+  background-color: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: 9999px;
+  border: 1px solid rgba(30, 64, 175, 0.22);
+  box-shadow: 0 16px 36px -8px rgba(30, 64, 175, 0.16), 0 2px 10px rgba(0,0,0,0.04);
+}
+
+.nav-header-scrolled .brand-element,
+.nav-header-scrolled .live-element,
+.nav-header-scrolled .cta-default {
+  opacity: 0;
+  max-width: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transform: scale(0.9);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-header-default .brand-element,
+.nav-header-default .live-element,
+.nav-header-default .cta-default {
+  opacity: 1;
+  max-width: 240px;
+  transform: scale(1);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-header-scrolled .cta-notch {
+  opacity: 1;
+  display: inline-flex;
+  transform: scale(1);
+}
+
+.nav-header-default .cta-notch {
+  opacity: 0;
+  display: none;
+  transform: scale(0.9);
+}
+
+.mono-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.organic-card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 1.25rem;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.organic-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(30, 64, 175, 0.3);
+  box-shadow: 0 18px 38px -10px rgba(30, 64, 175, 0.09);
+}
+
+.hairline-b { border-bottom: 1px solid rgba(0, 0, 0, 0.08); }
+.hairline-t { border-top: 1px solid rgba(0, 0, 0, 0.08); }
 
 :root {
   --night: #101923;
