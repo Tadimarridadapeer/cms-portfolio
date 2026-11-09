@@ -39,6 +39,7 @@ export interface Project {
   technologies: string[];
   cover_image: string;
   gallery: string[];
+  live_url?: string;
   problem: string;
   solution: string;
   features: string[];

@@ -45,14 +45,14 @@ function generateNotificationHtml(enquiry: Enquiry): string {
       <div style="max-width: 620px; margin: 0 auto; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
         
         <!-- Header -->
-        <div style="background-color: #17232f; padding: 24px 28px; border-bottom: 3px solid #c9e56a;">
+        <div style="background-color: #17232f; padding: 24px 28px; border-bottom: 3px solid #2563eb;">
           <div style="color: #94a3b8; font-size: 11px; font-family: monospace; letter-spacing: 0.1em; text-transform: uppercase;">
             Cross Motive Services · Client Discovery
           </div>
           <h1 style="color: #ffffff; font-size: 20px; font-weight: 800; margin: 8px 0 0; letter-spacing: -0.02em;">
             New Project Enquiry Received
           </h1>
-          <div style="display: inline-block; margin-top: 10px; background: rgba(201, 229, 106, 0.15); color: #c9e56a; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-family: monospace; font-weight: 700;">
+          <div style="display: inline-block; margin-top: 10px; background: rgba(37, 99, 235, 0.15); color: #3b82f6; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-family: monospace; font-weight: 700;">
             ${enquiry.reference_code}
           </div>
         </div>

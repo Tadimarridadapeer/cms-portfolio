@@ -57,7 +57,7 @@ export function TechGrid() {
 
           <div className="arch-foot">
             <span>MODULAR BY DESIGN</span>
-            <Link href="/technologies" className="hover:text-[var(--lime)] transition-colors">
+            <Link href="/technologies" className="hover:text-blue-400 transition-colors">
               BUILT FOR CHANGE ↗
             </Link>
           </div>

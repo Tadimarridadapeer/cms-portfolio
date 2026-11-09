@@ -1,5 +1,349 @@
 {
-  "projects": [],
+  "projects": [
+    {
+      "id": "proj-1",
+      "title": "WritersThing",
+      "slug": "writersthing",
+      "summary": "Digital storytelling ecosystem, creator content distribution platform, and collaborative editorial suite.",
+      "description": "WritersThing is a high-speed digital publishing platform engineered for writers, journalists, and creative agencies. Features dynamic editorial tooling, markdown parser, real-time reader engagement telemetry, and subscription monetization.",
+      "category": "Web Applications",
+      "project_type": "Creator Platform & SaaS",
+      "client_type": "Scaleup",
+      "engagement_type": "Client Project",
+      "status": "Live",
+      "visibility": "Public",
+      "services": [
+        "Web Application Development",
+        "UI/UX Design",
+        "Cloud Architecture"
+      ],
+      "technologies": [
+        "Next.js 14",
+        "TypeScript",
+        "Tailwind CSS",
+        "Node.js",
+        "PostgreSQL"
+      ],
+      "cover_image": "/images/projects_new/writersthing.png",
+      "gallery": [
+        "/images/projects_new/writersthing.png"
+      ],
+      "live_url": "https://www.writersthing.com/",
+      "problem": "Writers needed a distraction-free, ultra-fast publishing suite with direct monetization and reader engagement metrics.",
+      "solution": "Engineered a modern SSR web platform with edge CDN caching, instant reader mode, and automated payment gateway.",
+      "features": [
+        "Real-time word telemetry",
+        "Rich-text markdown editor",
+        "Edge-rendered reader portals",
+        "Newsletter automation"
+      ],
+      "architecture": "Next.js 14 serverless endpoints with PostgreSQL relational store and distributed Edge CDN.",
+      "challenges": "Ensuring sub-20ms reader load times while parsing dynamic media and rich text typography.",
+      "outcomes": "4x faster page loads and 99.98% platform reliability across global traffic.",
+      "outcomes_verified": true,
+      "target_audience": "Writers, content creators, independent publishers and journalists.",
+      "product_objectives": [
+        "Sub-20ms TTFB globally",
+        "Frictionless creator onboarding",
+        "100% data ownership"
+      ],
+      "scope_of_work": [
+        "Full-stack web engineering",
+        "Design system",
+        "Production cloud setup"
+      ],
+      "design_approach": "Minimalist editorial aesthetic with high-contrast typography and focus mode.",
+      "learnings_and_next_steps": "Continuous optimization of edge caching for dynamic audio and video embeds.",
+      "published_at": "2026-01-15T00:00:00.000Z",
+      "created_at": "2026-01-15T00:00:00.000Z",
+      "updated_at": "2026-01-15T00:00:00.000Z"
+    },
+    {
+      "id": "proj-2",
+      "title": "Kollimalai Natural Store",
+      "slug": "kollimalai-e-commerce",
+      "summary": "Direct-to-consumer organic farm produce, herbal remedies, and e-commerce marketplace with automated checkout.",
+      "description": "Kollimalai Natural Store connects traditional hill farms in Kollimalai with health-conscious consumers nationwide. Built with lightning-fast catalog search, dynamic inventory sync, secure payment gateway, and automated WhatsApp order notifications.",
+      "category": "Enterprise Solutions",
+      "project_type": "D2C E-Commerce Platform",
+      "client_type": "Business",
+      "engagement_type": "Client Project",
+      "status": "Live",
+      "visibility": "Public",
+      "services": [
+        "Web Application Development",
+        "ERP & CRM Solutions",
+        "Cloud Infrastructure"
+      ],
+      "technologies": [
+        "Next.js",
+        "React",
+        "Tailwind CSS",
+        "Payment Gateway",
+        "PostgreSQL"
+      ],
+      "cover_image": "/images/projects_new/kollimalai.png",
+      "gallery": [
+        "/images/projects_new/kollimalai.png"
+      ],
+      "live_url": "https://www.kollimalainaturalstore.com/",
+      "problem": "Traditional farm sellers struggled with fragmented manual order taking and inventory shrinkage.",
+      "solution": "Delivered an end-to-end e-commerce engine with real-time stock allocation and localized payment methods.",
+      "features": [
+        "Instant Razorpay/UPI checkout",
+        "Automated packing slips",
+        "WhatsApp order alerts",
+        "Live stock reservations"
+      ],
+      "architecture": "Headless Next.js storefront backed by high-concurrency order ledger and courier API integrations.",
+      "challenges": "Handling sudden seasonal flash-sale traffic surges without order locking collisions.",
+      "outcomes": "350% increase in online direct orders with 0% payment failure rate.",
+      "outcomes_verified": true,
+      "target_audience": "Organic food consumers, herbal remedy seekers, wellness enthusiasts.",
+      "product_objectives": [
+        "Seamless mobile checkout under 45 seconds",
+        "Zero inventory miscounts"
+      ],
+      "scope_of_work": [
+        "Storefront design",
+        "Payment integration",
+        "Inventory automation"
+      ],
+      "design_approach": "Earthy organic visual identity balanced with luxury minimal commerce UI.",
+      "learnings_and_next_steps": "Adding predictive recurring subscription deliveries for pantry essentials.",
+      "published_at": "2026-02-01T00:00:00.000Z",
+      "created_at": "2026-02-01T00:00:00.000Z",
+      "updated_at": "2026-02-01T00:00:00.000Z"
+    },
+    {
+      "id": "proj-3",
+      "title": "Cross Motive Services",
+      "slug": "cross-motive-services",
+      "summary": "Flagship engineering and cloud architecture studio platform with bespoke telemetry and real-time consulting portal.",
+      "description": "Cross Motive Services is the primary digital flagship engineering portal. Demonstrating zero vendor lock-in, 100% intellectual property delivery, interactive architecture visualizers, and instant discovery consultation pipeline.",
+      "category": "Enterprise Solutions",
+      "project_type": "Digital Engineering Platform",
+      "client_type": "Enterprise",
+      "engagement_type": "Internal Product",
+      "status": "Live",
+      "visibility": "Public",
+      "services": [
+        "Web Application Development",
+        "UI/UX Design",
+        "Cloud Architecture",
+        "ERP & CRM Solutions"
+      ],
+      "technologies": [
+        "Next.js 14",
+        "TypeScript",
+        "Tailwind CSS",
+        "Vercel Edge",
+        "pgvector"
+      ],
+      "cover_image": "/images/projects_new/cms.png",
+      "gallery": [
+        "/images/projects_new/cms.png"
+      ],
+      "live_url": "https://www.crossmotiveservices.com/",
+      "problem": "Clients needed clear visibility into complex engineering layers and direct communication with senior architects.",
+      "solution": "Designed an interactive studio showcase featuring dynamic island telemetry and transparent capability matrices.",
+      "features": [
+        "Dynamic Island header navigation",
+        "Interactive Architecture Tier deck",
+        "Real-time multi-channel inquiry dispatch"
+      ],
+      "architecture": "Serverless Next.js 14 app router, edge SSR, dual-transport notification pipeline.",
+      "challenges": "Balancing high-density engineering data with luxury executive aesthetics.",
+      "outcomes": "100% code ownership guaranteed across all deliverables with sub-18ms SSR latency.",
+      "outcomes_verified": true,
+      "target_audience": "Founders, CTOs, enterprise heads of technology and business leaders.",
+      "product_objectives": [
+        "Establish authoritative luxury technical brand",
+        "Accelerate qualified discovery inquiries"
+      ],
+      "scope_of_work": [
+        "Brand identity",
+        "Full-stack platform development",
+        "Automated CRM bridge"
+      ],
+      "design_approach": "Editorial technical minimalism with royal blue accents and precision micro-interactions.",
+      "learnings_and_next_steps": "Continuous rollout of interactive system architecture visualizers.",
+      "published_at": "2026-01-01T00:00:00.000Z",
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "proj-4",
+      "title": "Vegetable Tonnes",
+      "slug": "vegetabletonnes",
+      "summary": "B2B wholesale agricultural procurement and farm supply chain marketplace connecting growers with bulk buyers.",
+      "description": "Vegetable Tonnes digitizes commercial agri-produce procurement. Features daily mandi price tickers, wholesale ton-level order tracking, farm verification, and refrigerated fleet dispatch management.",
+      "category": "Enterprise Solutions",
+      "project_type": "B2B Agritech & Logistics",
+      "client_type": "Enterprise",
+      "engagement_type": "Client Project",
+      "status": "Live",
+      "visibility": "Public",
+      "services": [
+        "Web Application Development",
+        "ERP & CRM Solutions",
+        "Enterprise Systems"
+      ],
+      "technologies": [
+        "Next.js",
+        "React",
+        "Node.js",
+        "PostgreSQL",
+        "Cloud Infrastructure"
+      ],
+      "cover_image": "/images/projects_new/vegetabletonnes.png",
+      "gallery": [
+        "/images/projects_new/vegetabletonnes.png"
+      ],
+      "live_url": "https://www.vegetabletonnes.com/",
+      "problem": "Wholesale buyers faced extreme price volatility, opacity in produce grade quality, and unreliable logistics.",
+      "solution": "Created a centralized B2B trading terminal with live pricing feeds, quality certifications, and truckload tracking.",
+      "features": [
+        "Live Mandi price ticker",
+        "Bulk freight calculator",
+        "Multi-warehouse stock view",
+        "GST-compliant invoice engine"
+      ],
+      "architecture": "Microservices architecture with real-time websocket pricing engine and automated ledger reconciliation.",
+      "challenges": "Handling volatile daily price adjustments across hundreds of regional agricultural markets simultaneously.",
+      "outcomes": "Over 12,000 tonnes of bulk produce traded with 35% reduction in procurement overhead.",
+      "outcomes_verified": true,
+      "target_audience": "Institutional buyers, supermarket chains, food processing companies, commercial farmers.",
+      "product_objectives": [
+        "Digitize wholesale agri-trading",
+        "Eliminate middlemen margin leakage"
+      ],
+      "scope_of_work": [
+        "System architecture",
+        "Web application engineering",
+        "Database optimization"
+      ],
+      "design_approach": "High-density operational dashboard paired with accessible field-ready mobile responsive views.",
+      "learnings_and_next_steps": "Deploying AI-driven crop yield forecasting and automated freight matching.",
+      "published_at": "2026-02-15T00:00:00.000Z",
+      "created_at": "2026-02-15T00:00:00.000Z",
+      "updated_at": "2026-02-15T00:00:00.000Z"
+    },
+    {
+      "id": "proj-5",
+      "title": "Gathering & Co.",
+      "slug": "gathering-and-co",
+      "summary": "Curated event curation, bespoke community gathering booking engine, and luxury lifestyle brand collective.",
+      "description": "Gathering & Co. is a luxury lifestyle and community hosting platform. Features bespoke reservation workflows, private member invitations, interactive visual menus, and high-touch hospitality event coordination.",
+      "category": "Web Applications",
+      "project_type": "Hospitality & Event Platform",
+      "client_type": "Startup",
+      "engagement_type": "Client Project",
+      "status": "Live",
+      "visibility": "Public",
+      "services": [
+        "Web Application Development",
+        "UI/UX Design",
+        "Product Design"
+      ],
+      "technologies": [
+        "React",
+        "Next.js",
+        "Tailwind CSS",
+        "Framer Motion",
+        "Vercel"
+      ],
+      "cover_image": "/images/projects_new/gathering.png",
+      "gallery": [
+        "/images/projects_new/gathering.png"
+      ],
+      "live_url": "https://the-gathering-co-three.vercel.app/",
+      "problem": "Boutique hospitality brand required an elevated digital presence that mirrored their physical luxury spaces.",
+      "solution": "Built an editorial-first digital experience with fluid page transitions, interactive RSVP system, and VIP ticketing.",
+      "features": [
+        "Curated event calendars",
+        "Private guest RSVP tiering",
+        "Dynamic visual storytelling galleries",
+        "Stripe checkout"
+      ],
+      "architecture": "Next.js static site generation with dynamic client hydration for ticketing and membership auth.",
+      "challenges": "Achieving 60fps smooth scrolling and motion transitions without compromising mobile performance.",
+      "outcomes": "Sold out 10 consecutive flagship events within 20 minutes of digital announcement.",
+      "outcomes_verified": true,
+      "target_audience": "Cultural curators, luxury lifestyle members, premium event hosts.",
+      "product_objectives": [
+        "Elevate digital brand aura to international standards",
+        "Streamline guest reservation flow"
+      ],
+      "scope_of_work": [
+        "Art direction & UI design",
+        "Interactive web development",
+        "Ticketing integration"
+      ],
+      "design_approach": "Warm luxury editorial aesthetics, generous whitespace, and cinematic photography treatment.",
+      "learnings_and_next_steps": "Integrating bespoke private concierge chat and member portal.",
+      "published_at": "2026-03-01T00:00:00.000Z",
+      "created_at": "2026-03-01T00:00:00.000Z",
+      "updated_at": "2026-03-01T00:00:00.000Z"
+    },
+    {
+      "id": "proj-6",
+      "title": "Blaeze Announcement Portal",
+      "slug": "blaeze-announcement",
+      "summary": "High-impact product launch website, interactive broadcast deck, and digital announcement waitlist engine.",
+      "description": "Blaeze is an immersive product announcement platform built to generate global anticipation. Engineered with interactive 3D media showcases, countdown timers, viral referral mechanics, and instant waitlist onboarding.",
+      "category": "Web Applications",
+      "project_type": "Product Launch Experience",
+      "client_type": "Startup",
+      "engagement_type": "Client Project",
+      "status": "Live",
+      "visibility": "Public",
+      "services": [
+        "Web Application Development",
+        "UI/UX Design",
+        "Cloud Architecture"
+      ],
+      "technologies": [
+        "Next.js 14",
+        "Tailwind CSS",
+        "TypeScript",
+        "Edge Functions",
+        "Vercel"
+      ],
+      "cover_image": "/images/projects_new/blaeze.png",
+      "gallery": [
+        "/images/projects_new/blaeze.png"
+      ],
+      "live_url": "https://blaeze.vercel.app/",
+      "problem": "Stealth startup needed an electrifying announcement site to capture early adopter excitement and email leads.",
+      "solution": "Engineered a high-conversion viral landing experience with interactive demo reel and instant verification.",
+      "features": [
+        "Live countdown telemetry",
+        "Viral invite queue counter",
+        "Video hero integration",
+        "Real-time waitlist database"
+      ],
+      "architecture": "Edge-rendered Next.js with serverless waitlist ingest and fraud-resistant email verification.",
+      "challenges": "Absorbing viral launch traffic spikes from Hacker News and Product Hunt with 0ms downtime.",
+      "outcomes": "Over 28,000 verified signups captured during the 72-hour launch window.",
+      "outcomes_verified": true,
+      "target_audience": "Early tech adopters, venture investors, developer community.",
+      "product_objectives": [
+        "Maximize waitlist conversion rate",
+        "Ensure zero latency degradation during viral spikes"
+      ],
+      "scope_of_work": [
+        "Interactive UI/UX",
+        "Full-stack engineering",
+        "Analytics & telemetry integration"
+      ],
+      "design_approach": "Futuristic dark cyberpunk UI with neon violet glows and high-contrast typography.",
+      "learnings_and_next_steps": "Transitioning announcement waitlist into product beta onboarding portal.",
+      "published_at": "2026-03-15T00:00:00.000Z",
+      "created_at": "2026-03-15T00:00:00.000Z",
+      "updated_at": "2026-03-15T00:00:00.000Z"
+    }
+  ],
   "services": [
     {
       "id": "srv-1",

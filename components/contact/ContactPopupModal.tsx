@@ -179,14 +179,14 @@ export function ContactPopupModal() {
           onClick={closeModal}
           type="button"
           aria-label="Close contact popup"
-          className="absolute top-3 right-3 sm:top-4 sm:right-4 w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white/70 hover:text-white flex items-center justify-center transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#c9e56a] cursor-pointer"
+          className="absolute top-3 right-3 sm:top-4 sm:right-4 w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white/70 hover:text-white flex items-center justify-center transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-royal-bright cursor-pointer"
         >
           <X className="w-5 h-5" />
         </button>
 
         {submissionResult ? (
           <div className="text-center py-6 space-y-4">
-            <div className="w-14 h-14 mx-auto rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+            <div className="w-14 h-14 mx-auto rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center">
               <CheckCircle className="w-7 h-7" />
             </div>
             <div className="space-y-1">
@@ -197,7 +197,7 @@ export function ContactPopupModal() {
             </div>
             <div className="inline-block p-3 rounded-lg bg-white/5 border border-white/10">
               <p className="text-[10px] font-mono uppercase tracking-widest text-white/60">Reference Code</p>
-              <p className="text-sm font-mono font-bold text-[#c9e56a]">{submissionResult.reference_code}</p>
+              <p className="text-sm font-mono font-bold text-blue-400">{submissionResult.reference_code}</p>
             </div>
             <div className="pt-2">
               <button
@@ -213,8 +213,8 @@ export function ContactPopupModal() {
           <form onSubmit={handleSubmit} className="space-y-4">
             {/* Header */}
             <div className="space-y-1.5 pr-8">
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#c9e56a]/15 text-[#c9e56a] text-[11px] font-mono uppercase tracking-wider font-semibold">
-                <Sparkles className="w-3 h-3" />
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-500/15 border border-blue-500/30 text-blue-400 text-[11px] font-mono uppercase tracking-wider font-semibold">
+                <Sparkles className="w-3 h-3 text-blue-400" />
                 <span>Start A Project</span>
               </div>
               <h3 id="modal-title" className="text-xl sm:text-2xl font-bold tracking-tight text-white">
@@ -245,7 +245,7 @@ export function ContactPopupModal() {
                     setFormData({ ...formData, full_name: e.target.value });
                     if (fieldErrors.full_name) setFieldErrors({ ...fieldErrors, full_name: "" });
                   }}
-                  className={`w-full px-3 py-2 text-xs bg-white/5 border rounded-lg text-white placeholder-white/30 focus:outline-none focus:ring-1 focus:ring-[#c9e56a] transition-colors ${
+                  className={`w-full px-3 py-2 text-xs bg-white/5 border rounded-lg text-white placeholder-white/30 focus:outline-none focus:ring-1 focus:ring-royal-bright focus:border-royal-bright transition-colors ${
                     fieldErrors.full_name ? "border-rose-500" : "border-white/15"
                   }`}
                 />
@@ -266,7 +266,7 @@ export function ContactPopupModal() {
                     setFormData({ ...formData, email: e.target.value });
                     if (fieldErrors.email) setFieldErrors({ ...fieldErrors, email: "" });
                   }}
-                  className={`w-full px-3 py-2 text-xs bg-white/5 border rounded-lg text-white placeholder-white/30 focus:outline-none focus:ring-1 focus:ring-[#c9e56a] transition-colors ${
+                  className={`w-full px-3 py-2 text-xs bg-white/5 border rounded-lg text-white placeholder-white/30 focus:outline-none focus:ring-1 focus:ring-royal-bright focus:border-royal-bright transition-colors ${
                     fieldErrors.email ? "border-rose-500" : "border-white/15"
                   }`}
                 />
@@ -282,7 +282,7 @@ export function ContactPopupModal() {
                 <select
                   value={formData.project_type}
                   onChange={(e) => setFormData({ ...formData, project_type: e.target.value })}
-                  className="w-full px-3 py-2 text-xs bg-[#17232f] border border-white/15 rounded-lg text-white focus:outline-none focus:ring-1 focus:ring-[#c9e56a]"
+                  className="w-full px-3 py-2 text-xs bg-[#17232f] border border-white/15 rounded-lg text-white focus:outline-none focus:ring-1 focus:ring-royal-bright focus:border-royal-bright"
                 >
                   <option value="Web Application Development">Web Application Development</option>
                   <option value="Mobile Application Development">Mobile Application Development</option>
@@ -299,7 +299,7 @@ export function ContactPopupModal() {
                 <select
                   value={formData.budget_range}
                   onChange={(e) => setFormData({ ...formData, budget_range: e.target.value })}
-                  className="w-full px-3 py-2 text-xs bg-[#17232f] border border-white/15 rounded-lg text-white focus:outline-none focus:ring-1 focus:ring-[#c9e56a]"
+                  className="w-full px-3 py-2 text-xs bg-[#17232f] border border-white/15 rounded-lg text-white focus:outline-none focus:ring-1 focus:ring-royal-bright focus:border-royal-bright"
                 >
                   <option value="₹25,000 - ₹50,000">₹25,000 - ₹50,000</option>
                   <option value="₹50,000 - ₹1,00,000">₹50,000 - ₹1,00,000</option>
@@ -323,7 +323,7 @@ export function ContactPopupModal() {
                   setFormData({ ...formData, description: e.target.value });
                   if (fieldErrors.description) setFieldErrors({ ...fieldErrors, description: "" });
                 }}
-                className={`w-full px-3 py-2 text-xs bg-white/5 border rounded-lg text-white placeholder-white/30 focus:outline-none focus:ring-1 focus:ring-[#c9e56a] transition-colors resize-none ${
+                className={`w-full px-3 py-2 text-xs bg-white/5 border rounded-lg text-white placeholder-white/30 focus:outline-none focus:ring-1 focus:ring-royal-bright focus:border-royal-bright transition-colors resize-none ${
                   fieldErrors.description ? "border-rose-500" : "border-white/15"
                 }`}
               />
@@ -345,7 +345,7 @@ export function ContactPopupModal() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#c9e56a] hover:bg-[#d8f07e] text-[#0b1219] font-bold text-xs tracking-tight shadow-md hover:shadow-lg transition-all duration-200 disabled:opacity-50 cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-royal hover:bg-royal-bright text-white font-bold text-xs uppercase tracking-wider shadow-royal-glow hover:shadow-lg transition-all duration-200 disabled:opacity-50 cursor-pointer"
               >
                 {isSubmitting ? (
                   <span>Sending...</span>

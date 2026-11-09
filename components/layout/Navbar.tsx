@@ -58,8 +58,8 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`transition-colors duration-200 hover:text-[var(--lime)] ${
-                  isActive ? "text-[var(--lime)] font-semibold" : ""
+                className={`transition-colors duration-200 hover:text-blue-400 ${
+                  isActive ? "text-blue-400 font-semibold" : ""
                 }`}
               >
                 {link.label}
@@ -70,8 +70,8 @@ export function Navbar() {
 
         {/* Desktop CTA */}
         <Link href="/contact" className="nav-action hidden md:flex items-center gap-4 text-xs text-white group">
-          <span className="group-hover:text-[var(--lime)] transition-colors">Let&apos;s talk</span>
-          <span className="w-8 h-8 rounded-full border border-[#64717c] grid place-items-center text-sm transition-all duration-200 group-hover:bg-[var(--lime)] group-hover:border-[var(--lime)] group-hover:text-[var(--night)] group-hover:rotate-45">
+          <span className="group-hover:text-blue-400 transition-colors">Let&apos;s talk</span>
+          <span className="w-8 h-8 rounded-full border border-[#64717c] grid place-items-center text-sm transition-all duration-200 group-hover:bg-[#2563eb] group-hover:border-[#2563eb] group-hover:text-white group-hover:rotate-45">
             ↗
           </span>
         </Link>
@@ -98,7 +98,7 @@ export function Navbar() {
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
                 className={`text-sm font-medium py-1.5 transition-colors ${
-                  isActive ? "text-[var(--lime)] font-semibold" : "text-white/80 hover:text-[var(--lime)]"
+                  isActive ? "text-blue-400 font-semibold" : "text-white/80 hover:text-blue-400"
                 }`}
               >
                 {link.label}

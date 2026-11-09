@@ -12,11 +12,11 @@ const ROTATING_WORDS = [
 ];
 
 const STREAMING_LOGS = [
-  { prompt: "$", text: "cms-engine build --target=production", color: "text-[#c9e56a]" },
+  { prompt: "$", text: "cms-engine build --target=production", color: "text-[#5c83f2]" },
   { prompt: ">", text: "[ARCH] Next.js 14 · React Native · pgvector", color: "text-[#9bb3ff]" },
   { prompt: ">", text: "[PERF] Serverless SSR compiled in 18ms", color: "text-white" },
   { prompt: ">", text: "[AUDIT] 100% Code Ownership · Zero Vendor Lock", color: "text-[#aebac5]" },
-  { prompt: "●", text: "[STATUS] Production Ready // All Systems Operational", color: "text-[#c9e56a]" },
+  { prompt: "●", text: "[STATUS] Production Ready // All Systems Operational", color: "text-[#5c83f2]" },
 ];
 
 export function Hero() {
@@ -108,7 +108,7 @@ export function Hero() {
                 </div>
                 <span>cms.engine // live-build</span>
                 <span className="hero-panel-badge">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--lime)] animate-ping inline-block" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-ping inline-block" />
                   LIVE STREAM
                 </span>
               </div>
@@ -121,7 +121,7 @@ export function Hero() {
                   </div>
                 ))}
                 <div className="flex items-center gap-2 text-white/40 mt-1">
-                  <span className="text-[var(--lime)] animate-pulse">_</span>
+                  <span className="text-blue-400 animate-pulse">_</span>
                   <span className="text-[9px] font-mono">awaiting commit...</span>
                 </div>
               </div>

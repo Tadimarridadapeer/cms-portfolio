@@ -35,7 +35,7 @@ export function Footer() {
             </p>
 
             <div className="footer-status-pill">
-              <span className="w-2 h-2 rounded-full bg-[var(--lime)] animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
               <span>BOOKING Q4 &amp; Q1 ENGAGEMENTS</span>
             </div>
 
@@ -44,7 +44,7 @@ export function Footer() {
                 Direct:{" "}
                 <a
                   href="mailto:sahith@crossmotiveservices.com"
-                  className="text-white hover:text-[var(--lime)] underline transition-colors break-all"
+                  className="text-white hover:text-blue-400 underline transition-colors break-all"
                 >
                   sahith@crossmotiveservices.com
                 </a>
@@ -149,7 +149,7 @@ export function Footer() {
 
           <button
             onClick={scrollToTop}
-            className="flex items-center gap-1.5 text-xs text-[#aebac5] hover:text-[var(--lime)] transition-colors cursor-pointer bg-transparent border-none"
+            className="flex items-center gap-1.5 text-xs text-[#aebac5] hover:text-blue-400 transition-colors cursor-pointer bg-transparent border-none"
             aria-label="Scroll back to top"
           >
             <span>Back to top</span>

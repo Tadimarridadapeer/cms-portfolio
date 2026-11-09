@@ -31,7 +31,7 @@ export function CTASection({
         <div className="contact-copy">
           <p>{description}</p>
           <Link
-            className="btn-primary inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#c9e56a] hover:bg-[#d8f07e] text-[#0b1219] font-semibold text-sm tracking-tight shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 group"
+            className="btn-primary inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-semibold text-sm tracking-tight shadow-[0_4px_18px_rgba(37,99,235,0.35)] hover:shadow-[0_8px_26px_rgba(37,99,235,0.45)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 group"
             href={primaryCtaLink}
           >
             <span>{primaryCtaText}</span>
