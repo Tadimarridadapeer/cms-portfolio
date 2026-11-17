@@ -6,7 +6,7 @@ import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp";
 import { ContactPopupModal } from "@/components/contact/ContactPopupModal";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://crossmotiveservices.online"),
   title: {
     default: "Cross Motive Services — We Turn Ideas Into Digital Products",
     template: "%s | Cross Motive Services",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://crossmotiveservices.com",
+    url: "https://crossmotiveservices.online",
     title: "Cross Motive Services — We Turn Ideas Into Digital Products",
     description:
       "From early-stage startup concepts to enterprise-grade platforms, we design, engineer, and launch digital experiences built for real-world impact.",
@@ -72,11 +72,11 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Cross Motive Services",
-    url: "https://crossmotiveservices.com",
-    logo: "https://crossmotiveservices.com/logo.svg",
+    url: "https://crossmotiveservices.online",
+    logo: "https://crossmotiveservices.online/logo.svg",
     description:
       "Technology and digital product development company turning ideas into functional digital products.",
-    email: "sahith@crossmotiveservices.com",
+    email: "sahith@crossmotiveservices.online",
     sameAs: [
       "https://github.com",
       "https://linkedin.com",
@@ -87,6 +87,18 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <head>
+        {/* Google Tag Manager */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtm.js?id=GTM-WTLTNTJ2"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());`,
+          }}
+        />
         <link rel="icon" type="image/png" href="/favicon.png" />
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/favicon.png" />
@@ -102,6 +114,15 @@ export default function RootLayout({
         />
       </head>
       <body className="flex flex-col min-h-screen">
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-WTLTNTJ2"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
