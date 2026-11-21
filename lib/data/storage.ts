@@ -133,7 +133,11 @@ export async function getProjectBySlug(slug: string, includeDrafts = false): Pro
   }
 
   const store = ensureStoreFile();
-  const proj = store.projects.find((p) => p.slug === slug);
+  const proj = store.projects.find(
+    (p) =>
+      p.slug === slug ||
+      ((slug === "aperolglobal" || slug === "april-global" || slug === "aprilglobal") && p.slug === "aperol-global")
+  );
   if (!proj) return null;
   if (!includeDrafts && (proj.status === "Draft" || proj.visibility !== "Public")) {
     return null;

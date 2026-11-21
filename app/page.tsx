@@ -262,6 +262,15 @@ const SHOWCASE_PROJECTS = [
     impact: "Sub-20ms reader TTFB globally",
   },
   {
+    title: "Aperol Global",
+    category: "B2B APPAREL & FASHION TECH",
+    summary: "Bespoke apparel manufacturing and private-label fashion platform with interactive OEM/ODM catalog and cinematic scroll engineering.",
+    url: "https://aperolglobal.vercel.app/",
+    image: "/images/projects_new/aperolglobal.png",
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Canvas & Motion"],
+    impact: "3.2x lead conversion lift",
+  },
+  {
     title: "Kollimalai Natural Store",
     category: "D2C E-COMMERCE",
     summary: "Direct-to-consumer organic farm produce, herbal remedies, and e-commerce marketplace with automated checkout and real-time inventory ledger.",

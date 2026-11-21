@@ -60,6 +60,70 @@
     },
     {
       "id": "proj-2",
+      "title": "Aperol Global",
+      "slug": "aperol-global",
+      "summary": "Bespoke apparel manufacturing and private-label fashion platform with interactive OEM/ODM catalog and cinematic scroll engineering.",
+      "description": "Aperol Global is a premier digital flagship and interactive platform engineered for luxury apparel manufacturing, bespoke private-label menswear, OEM/ODM production, and pattern engineering. Moving beyond conventional utilitarian B2B directories, the platform delivers high-craft editorial aesthetics, kinetic typography, and fluid scroll interactions that mirror the precision and tactile quality of bespoke garment manufacturing.",
+      "category": "Web Applications",
+      "project_type": "B2B Apparel • Fashion Tech",
+      "client_type": "Enterprise / Luxury Label",
+      "engagement_type": "Client Project",
+      "status": "Live",
+      "visibility": "Public",
+      "services": [
+        "Web Application Development",
+        "UI/UX Design",
+        "Interaction Design & Motion Engineering",
+        "Cloud Architecture"
+      ],
+      "technologies": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Canvas & Motion",
+        "Framer Motion",
+        "Vercel"
+      ],
+      "cover_image": "/images/projects_new/aperolglobal.png",
+      "gallery": [
+        "/images/projects_new/aperolglobal.png"
+      ],
+      "live_url": "https://aperolglobal.vercel.app/",
+      "problem": "Traditional garment and textile manufacturing websites are notoriously utilitarian—dated, clunky, and unable to reflect modern design standards demanded by contemporary DTC and luxury fashion houses. High-end fashion founders faced opaque MOQs, lack of material specs, and slow lead ingestion via generic contact forms.",
+      "solution": "Engineered responsive viewport-driven animation stages, structured interactive OEM/ODM product catalog across tailored menswear, knitwear, and denim, and a frictionless multi-step inquiry engine with sub-second global edge caching on Vercel.",
+      "features": [
+        "Kinetic typography and viewport-driven animation stages",
+        "Interactive OEM/ODM catalog with material specifications",
+        "Frictionless sample request & technical pack inquiry funnel",
+        "Fluid scroll-velocity tracking and 3D character morphing",
+        "Sub-second global edge delivery on Vercel Edge Network"
+      ],
+      "architecture": "Next.js App Router with React 19, Tailwind CSS, Framer Motion, and Canvas viewport math deployed on Vercel Edge Network with sub-second asset delivery.",
+      "challenges": "Engineering custom scroll-velocity tracking and clamp functions to drive 3D tilt, kinetic character morphing, and clip-path transitions smoothly across varying refresh rates without layout thrashing.",
+      "outcomes": "3.2x lift in qualified client inquiries, 4.8m average session duration, and 98/100 Lighthouse performance rating worldwide.",
+      "outcomes_verified": true,
+      "target_audience": "Luxury fashion houses, menswear designers, private-label brand founders, and apparel sourcing directors.",
+      "product_objectives": [
+        "Luxury editorial brand perception for garment manufacturing",
+        "Frictionless tech-pack and sample submission flow",
+        "Buttery 60 FPS viewport transitions across all devices",
+        "12+ countries global client inquiry reach"
+      ],
+      "scope_of_work": [
+        "Product engineering & interaction design",
+        "Kinetic typography & motion architecture",
+        "OEM/ODM digital catalog system",
+        "Production deployment & edge caching"
+      ],
+      "design_approach": "Minimalist luxury editorial aesthetic with tactile typography, dynamic clip-paths, and responsive viewport math.",
+      "learnings_and_next_steps": "Continuous expansion of interactive 3D fabric swatches and real-time custom production timeline estimators.",
+      "published_at": "2026-02-01T00:00:00.000Z",
+      "created_at": "2026-02-01T00:00:00.000Z",
+      "updated_at": "2026-02-01T00:00:00.000Z"
+    },
+    {
+      "id": "proj-3",
       "title": "Kollimalai Natural Store",
       "slug": "kollimalai-e-commerce",
       "summary": "Direct-to-consumer organic farm produce, herbal remedies, and e-commerce marketplace with automated checkout.",
@@ -116,7 +180,7 @@
       "updated_at": "2026-02-01T00:00:00.000Z"
     },
     {
-      "id": "proj-3",
+      "id": "proj-4",
       "title": "Cross Motive Services",
       "slug": "cross-motive-services",
       "summary": "Flagship engineering and cloud architecture studio platform with bespoke telemetry and real-time consulting portal.",
@@ -173,7 +237,7 @@
       "updated_at": "2026-01-01T00:00:00.000Z"
     },
     {
-      "id": "proj-4",
+      "id": "proj-5",
       "title": "Vegetable Tonnes",
       "slug": "vegetabletonnes",
       "summary": "B2B wholesale agricultural procurement and farm supply chain marketplace connecting growers with bulk buyers.",
@@ -230,7 +294,7 @@
       "updated_at": "2026-02-15T00:00:00.000Z"
     },
     {
-      "id": "proj-5",
+      "id": "proj-6",
       "title": "Gathering & Co.",
       "slug": "gathering-and-co",
       "summary": "Curated event curation, bespoke community gathering booking engine, and luxury lifestyle brand collective.",
@@ -287,7 +351,7 @@
       "updated_at": "2026-03-01T00:00:00.000Z"
     },
     {
-      "id": "proj-6",
+      "id": "proj-7",
       "title": "Blaeze Announcement Portal",
       "slug": "blaeze-announcement",
       "summary": "High-impact product launch website, interactive broadcast deck, and digital announcement waitlist engine.",
